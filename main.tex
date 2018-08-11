@@ -13,8 +13,15 @@ nopostdot, 											 %quita el punto final en los acrónimos         .
 \hypersetup{ colorlinks = true } % Hipervínculos: escribir "false" para imprimir o "true" para ver en digital.
 
 % Ver los documentos de estilos bibliográficos para editar estas siguientes 2 líneas. Se deben de copiar a partir de los PDF de estilos bibliográficos y no es necesario que el estudiante las edite.
-\usepackage{natbib} % Para algunos estilos bibliográficos
-\bibliographystyle{estilos_bibliograficos/natbib/apalike}
+% Se carga bibliografía y estilo bibliográfico
+  \usepackage[
+  	sorting=none,
+    bibstyle=chem-biochem,citestyle=numeric,biblabel=brackets,
+    natbib=true
+  ]{biblatex}
+  \DefineBibliographyStrings{spanish}{andothers={et al.}}
+% Más estilos bibliográficos https://www.sharelatex.com/learn/Biblatex_bibliography_styles 
+\usepackage{csquotes}
 
 \loadglossary % No comentar esta línea
 
@@ -128,6 +135,7 @@ nopostdot, 											 %quita el punto final en los acrónimos         .
   \input{anexo/anexo_A}
   % Seguir copiando la linea de arriba para agregar más anexos.
   % 
+  \printbibliography
 \end{document}
 
 % ===== FIN DEL DOCUMENTO =====
