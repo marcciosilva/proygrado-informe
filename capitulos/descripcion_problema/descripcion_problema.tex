@@ -1,0 +1,42 @@
+\chapter{Descripción del problema} \label{section-descripcion-problema}
+\markright{Descripción del problema}
+
+\paragraph{}Este capítulo presenta el problema abordado en el marco de este proyecto y el paradigma de Savant Virtual, conocido como \textit{Heterogeneous Computing Scheduling Problem} o HCSP, que consiste en generar una planificación para la ejecución de tareas en un conjunto determinado de máquinas de manera óptima. En la sección \ref{section:descripcion-problema,subsection:formulacion-problema} se presenta la formulación del problema, mientras que en la sección \ref{section:descripcion-problema,subsection:heuristica} se presenta la heurística de referencia utilizada a la hora de llevar a cabo el aprendizaje automático.
+
+\section{Formulación del problema} \label{section:descripcion-problema,subsection:formulacion-problema}
+
+\paragraph{}En un contexto donde el poder de cómputo se ve incrementado constantemente y la comercialización de computadores de bajo costo es común, se hace posible la utilización de componentes eventualmente heterogéneos interconectados en sistemas distribuidos para la resolución de problemas grandes que no podían ser atacados en el pasado. Esto da lugar a nuevos problemas con los cuales lidiar, uno de los cuales es la generación de una planificación de ejecución frente a una colección de tareas potencialmente heterogéneas; es decir asignar de manera eficiente una máquina a cada tarea.
+
+\paragraph{}En el estudio realizado sobre este problema en este proyecto de grado, se considera a una tarea como una unidad atómica de trabajo que puede ser asignada a un recurso computacional. El hecho de que las máquinas disponibles sean diferentes entre sí en términos de prestaciones, genera una suerte de competencia entre las tareas por ``elegir`` a aquella máquina más apta y con mayor rendimiento. La única característica que se toma en cuenta sobre una tarea es su tiempo de ejecución, por cuestiones de simpleza. Esto se traduce en que una planificación óptima para la ejecución de tareas será aquella donde el tiempo que tarda la máquina que termina su ejecución por último sea mínimo; este tiempo es conocido como \textit{makespan}.
+
+\paragraph{}En términos formales, para una instancia del problema de dimensión $X\times Y$, se tiene un conjunto de tareas $T = \{t_1,t_2,\dots,t_X\}$ y un conjunto de recursos computacionales o máquinas $M = \{m_1,m_2,\dots,m_Y \}$. Además, dada una función de tiempo de ejecución $ET : \{1,\dots,X\} \times \{1,\dots,Y\} \rightarrow R^+$ tal que $ET(i,j)$ es el tiempo requerido para ejecutar la tarea $t_i$ en la máquina $m_j$, se puede construir una matriz con la información del tiempo de ejecución de cada tarea para cada máquina, conocida como matriz \textit{ETC} (del inglés \textit{Expected Time to Compute}). Esta matriz constituye la representación del problema utilizada como entrada para el sistema utilizado en este proyecto de grado.
+
+\paragraph{}Finalmente, se puede expresar que el objetivo de la resolución del problema HCSP se traduce en encontrar o aproximar aquella función que dada un conjunto de máquinas y un conjunto de tareas determine una planificación que minimice el valor del makespan obtenido.
+
+% \paragraph{}Se utilizó un programa generador de instancias del problema, extraído de \citet{bib-doctorado-nesmachnow}. 
+
+ \section{Heurística de referencia} \label{section:descripcion-problema,subsection:heuristica}
+ 
+\paragraph{}En el algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema de HCSP. De manera particular, la heurística utilizada como referencia en este proyecto emplea a Min-Min como criterio para seleccionar tareas en cada iteración del algoritmo. Según este criterio, se escoge de manera \textit{greedy} a la tarea que pueda ser completada primero. Para seleccionar esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en completar para cada una de las máquinas disponibles y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
+
+\paragraph{}Adicionalmente, para generar instancias del problema en forma de matrices ETC, se utilizó un programa también extraído de \citet{bib-doctorado-nesmachnow}.
+%  Se comienza con un conjunto \textit{U} de tareas sin asignar, se calcula el mínimo tiempo que cada una puede demorar en completar para cada máquina, y se escoge a aquella tarea que en promedio lleve menos tiempo en completar. Esta tarea es retirada del conjunto \textit{U}, y el proceso se repite hasta que todas las tareas están asignadas.
+ 
+ % TODO ¿tal vez incluir el código en un apéndice?
+ 
+ \paragraph{}
+ \SetEndCharOfAlgoLine{}
+ \begin{algorithm}[H]
+\SetAlgoLined
+\KwIn{conjunto de tareas sin asignar y conjunto de máquinas}
+%\KwResult{Task assignment}
+ \While{quedan tareas por asignar}{
+ 	seleccionar tarea de acuerdo a criterio elegido\;
+  \For{cada tarea a asignar y cada máquina}{
+  	evaluar criterio (tarea, máquina)\;
+  }
+  asignar tarea seleccionada a máquina seleccionada\;
+ }
+ \Return{asignación de tareas}
+ \caption{Algoritmo genérico de planificación de tareas} \label{algorithm:planificacion-tareas}
+\end{algorithm}

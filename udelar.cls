@@ -206,7 +206,13 @@ top=4cm,bottom=3cm,left=4.0cm,right=3.0cm]{geometry} %showframe para ver los mar
 %==========================
 
 
-
+%==== Opción de Proyecto de Grado para la clase ===
+\DeclareOption{grd}{%
+  \newcommand{\@degree}{Ing.}
+  \newcommand{\@degreename}{Ingenier{\'i}a en Computaci{\'o}n}
+  \newcommand{\local@degname}{Ingeniero}
+  \newcommand\local@doctype{Proyecto de Grado}
+}
 %==== Opción de Maestría para la clase ===
 \DeclareOption{msc}{%
   \newcommand{\@degree}{M.Sc.}
@@ -271,11 +277,6 @@ top=4cm,bottom=3cm,left=4.0cm,right=3.0cm]{geometry} %showframe para ver los mar
 %==========================
 
 %==== Autor, director de tesis, codirectores y director académico ====
-\renewcommand\author[2]{% Comando para el autor
-  \global\def\@authname{#1}
-  \global\def\@authsurn{#2}
-}
-
 %==== Pongo si quiero que sea un posgrado "en" algo o "de" algo ====
 \newcommand\escritura[1]{% Comando para el tipo de posgrado
 	\global\def\@tipoescritura{#1}
@@ -443,8 +444,9 @@ top=4cm,bottom=3cm,left=4.0cm,right=3.0cm]{geometry} %showframe para ver los mar
 		  \ifnum\@subtitle>0
 			  \nohyphens{\Large{\local@subtitle}}\par
 		  \fi
-		  \vspace*{2cm}
-		  \nohyphens{\large{\@authname\ \@authsurn}}\par
+      \vspace*{2cm}
+      \nohyphens{\large{Mauro Picó}}\par
+		  \nohyphens{\large{Marccio Silva}}\par
 	  \end{center}
 	  \vspace{\fill}
 	  \begin{center}
@@ -519,8 +521,9 @@ top=4cm,bottom=3cm,left=4.0cm,right=3.0cm]{geometry} %showframe para ver los mar
 	 \ifnum\@subtitle>0
 	 \nohyphens{\Large{\local@subtitle}}\par
 	 \fi
-	 \vspace*{2cm}
-	 \nohyphens{\large{\@authname\ \@authsurn}}\par
+   \vspace*{2cm}
+   \nohyphens{\large{Mauro Picó}}\par
+	 \nohyphens{\large{Marccio Silva}}\par
 \end{center}
 \vspace*{1cm}
 \begin{flushright}
@@ -594,9 +597,9 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
     \framebox[120mm][c]{\makebox[5mm][c]{}%
       \begin{minipage}[c]{105mm}
       \setlength{\parindent}{5mm}
-      \noindent\sloppy\nohyphens\@authsurn,
-      \nohyphens\@authname\par
-      \nohyphens{\local@title\ / \@authname\ \@authsurn.\ -\ \local@cityname:
+      \noindent\sloppy\nohyphens\/Silva,\nohyphens\/Marccio\par
+      \noindent\sloppy\nohyphens\/Picó,\nohyphens\/Mauro\par
+      \nohyphens{\local@title\ / Mauro Picó y Marccio Silva.\ -\ \local@cityname:
       \count1=0
       \count2=1
   	  \ifnum\@seconduniversity>0
