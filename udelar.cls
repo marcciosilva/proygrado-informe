@@ -82,11 +82,11 @@
 \RequirePackage{ltxcmds}
 \RequirePackage{titletoc}
 \RequirePackage[colorlinks,
-            citecolor=blue,
-            urlcolor=cyan,
-            linkcolor=blue,
-            citebordercolor=blue,
-            urlbordercolor=cyan,
+            citecolor=black,
+            urlcolor=black,
+            linkcolor=black,
+            citebordercolor=black,
+            urlbordercolor=black,
             linktocpage,
             hyperfootnotes=true
             ]{hyperref} %[colorlinks]
@@ -450,7 +450,7 @@ top=4cm,bottom=3cm,left=4.0cm,right=3.0cm]{geometry} %showframe para ver los mar
 	  \end{center}
 	  \vspace{\fill}
 	  \begin{center}
-	  Programa de Posgrado \@tipoescritura~\local@graduatename\\
+	  Programa de Grado \@tipoescritura~\local@graduatename\\
 	  \count1=0
 	  \count2=1
  	  \nohyphens{\@whilenum \count1<\@institute \do {
@@ -597,8 +597,8 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
     \framebox[120mm][c]{\makebox[5mm][c]{}%
       \begin{minipage}[c]{105mm}
       \setlength{\parindent}{5mm}
-      \noindent\sloppy\nohyphens\/Silva,\nohyphens\/Marccio\par
-      \noindent\sloppy\nohyphens\/Picó,\nohyphens\/Mauro\par
+      \noindent\sloppy\nohyphens\/Silva, \nohyphens\/Marccio\par
+      \noindent\sloppy\nohyphens\/Picó, \nohyphens\/Mauro\par
       \nohyphens{\local@title\ / Mauro Picó y Marccio Silva.\ -\ \local@cityname:
       \count1=0
       \count2=1
@@ -679,7 +679,7 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
    	  \fi
    	  %
       \ifthenelse{\@codirector>0}{\hspace{-2mm}\emph{et~al.}{}}.
-      II.~Universidad de la Rep{\'u}blica, Programa de Posgrado \@tipoescritura~\local@graduatename.
+      II.~Universidad de la Rep{\'u}blica, Programa de Grado \@tipoescritura~\local@graduatename.
       III.~T{\'i}tulo.}
     \end{minipage}}
   \end{center}
@@ -689,7 +689,7 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
 %==== Parte de la página II y III ====
 \newcommand\frontcover@maintext{
   \sloppy\nohyphens{\local@doctype\ de \@degreename\
-  presentada al Programa de Posgrado \@tipoescritura~\local@graduatename, \local@maininstitute\ de la Universidad de la Rep{\'u}blica, como parte de los requisitos
+  presentada al Programa de Grado \@tipoescritura~\local@graduatename, \local@maininstitute\ de la Universidad de la Rep{\'u}blica, como parte de los requisitos
   necesarios para la obtenci{\'o}n del t{\'i}tulo de
   \local@degname\ en \local@graduatename.}
 }

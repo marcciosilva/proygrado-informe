@@ -13,8 +13,8 @@ nopostdot, 											 %quita el punto final en los acrónimos         .
 \hypersetup{ colorlinks = true } % Hipervínculos: escribir "false" para imprimir o "true" para ver en digital.
 
 % Ver los documentos de estilos bibliográficos para editar estas siguientes 2 líneas. Se deben de copiar a partir de los PDF de estilos bibliográficos y no es necesario que el estudiante las edite.
-\usepackage{natbib} % Para algunos estilos bibliográficos
-\bibliographystyle{estilos_bibliograficos/natbib/apalike}
+\usepackage[numbers]{natbib} 
+\bibliographystyle{estilos_bibliograficos/natbib/numbers/apalike}
 
 \loadglossary % No comentar esta línea
 
@@ -109,17 +109,17 @@ nopostdot, 											 %quita el punto final en los acrónimos         .
   %
   \frontmatter  % Comando que genera la portadilla, el catalogo y el tribunal de evaluación. NO COMENTAR
   %
-  \include{ded_agr_epi/dedicacion}
-  \include{ded_agr_epi/agradecimientos}
-  \include{ded_agr_epi/epigrafe}
-  \include{resumen/resumen}
-  \include{resumen/abstract}
+  % \include{ded_agr_epi/dedicacion} % TODO agregar
+  % \include{ded_agr_epi/agradecimientos} % TODO agregar
+  % \include{ded_agr_epi/epigrafe} % TODO agregar
+  % \include{resumen/resumen} % TODO agregar
+  % \include{resumen/abstract} % TODO agregar
   %
-%  \listoffigures	         % Lista de figuras
-%  \listoftables	         % Lista de tablas
-  \listadesimbolos 		     % Lista de símbolos
-  %\listadenotaciones 	     % Lista de notaciones
-  \listadesiglas 		     % Lista de siglas
+%  \listoffigures	         % Lista de figuras % TODO agregar
+%  \listoftables	         % Lista de tablas % TODO agregar
+  \listadesimbolos 		     % Lista de símbolos % TODO agregar
+  %\listadenotaciones 	     % Lista de notaciones % TODO agregar
+  \listadesiglas 		     % Lista de siglas % TODO agregar
   %
   \tableofcontents           % Tabla de contenidos. Compilar dos veces para ver los cambios completos.
   %
@@ -139,18 +139,18 @@ nopostdot, 											 %quita el punto final en los acrónimos         .
   \bibliography{bibliografia/bibliography} % Agregar la cantidad de archivos .bib que se tengan para la bibliografía.
   \bibend % No comentar
   % 
-  \glosario 		         % Glosario, NO comentar
+  % \glosario 		         % Glosario, NO comentar
   %
-  \apenarabicnumbering
-  \apenmatter				 % Apéndices, NO comentar
-  \input{apendice/apendice_A}
-  \input{apendice/apendice_B}
-  \input{apendice/apendice_C}
+  % \apenarabicnumbering
+  % \apenmatter				 % Apéndices, NO comentar
+  % \input{apendice/apendice_A}
+  % \input{apendice/apendice_B}
+  % \input{apendice/apendice_C}
   % Seguir copiando la linea de arriba para agregar más apéndices.
   %
-  \anexarabicnumbering
-  \anexmatter				 % Anexos, NO comentar
-  \input{anexo/anexo_A}
+  % \anexarabicnumbering
+  % \anexmatter				 % Anexos, NO comentar
+  % \input{anexo/anexo_A}
   % Seguir copiando la linea de arriba para agregar más anexos.
   % 
 \end{document}
