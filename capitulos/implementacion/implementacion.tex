@@ -1,11 +1,11 @@
-\section{Implementación} \label{chapter-implementation}
+\chapter{Implementación} \label{chapter-implementation}
 \markright{Implementación}
 
 \paragraph{} En esta sección será presentado el sistema de software construido utilizando Python y la biblioteca de aprendizaje automático scikit-learn.
 
 \paragraph{} La arquitectura del sistema está conformada por componentes que tienen interacción directamente con la capa de persistencia, donde se alojan ejemplos de entrenamiento en diversos formatos y clasificadores de aprendizaje automático.
 
-\subsection{Generación de instancias del problema e instancias de entrenamiento}
+\section{Generación de instancias del problema e instancias de entrenamiento}
 
 \paragraph{} Al trabajar bajo el paradigma de aprendizaje automático se vuelve necesario contar con una manera accesible y automatizable de generar ejemplos de entrenamiento, cada uno constituido por una instancia del problema y su correspondiente solución esperada. Dichos ejemplos son utilizados para entrenar los clasificadores a utilizar. También se generan ejemplos del problema con el objetivo de evaluar el rendimiento de los clasificadores entrenados previamente.
 
@@ -15,7 +15,7 @@
 
 \paragraph{} Luego de generados los archivos, se requiere cambiar la estructura de los datos contenidos en ellos para obtener la estructura de datos con la cual los clasificadores se pueden entrenar y validar. Así mismo, se requiere generar un numero importante de instancias del problema para entrenamiento y validación, las cuales serán pares de archivos diferentes. Por este motivo se cuenta con un componente que se encarga de procesar instancias del problema y sus soluciones para convertirlas en un archivo único con un formato CSV procesable por librerías de manejo de datos. De manera adicional, este componente ofrece al usuario la posibilidad de determinar la ubicación de los datos de entrada y la ubicación de los nuevos archivos a generar. Así, este archivo CSV contiene las instancias del problema y sus soluciones organizadas en instancias de entrenamiento o validación para los clasificadores.
 
-\subsection{Generación de clasificadores}
+\section{Generación de clasificadores}
 
 \paragraph{} Fue necesario implementar un componente dedicado a generar clasificadores de aprendizaje automático con el fin de evaluar su desempeño. Este componente carga datos generados por el componente mencionado en la sección anterior y, utilizando herramientas de \textit{scikit-learn}, se encarga de generar un clasificador de aprendizaje automático, ya sea SVM o una red neuronal. 
 
@@ -38,7 +38,7 @@
 
 \paragraph{} Finalmente, este componente se encarga de persistir los clasificadores generados, proveyendo una interfaz al usuario para realizar todo lo mencionado de manera automática dado un conjunto de ejemplos de entrenamiento.
 
-\subsection{Clasificación}
+\section{Clasificación}
 
 \paragraph{} En lo que respecta a la clasificación, fue implementado un componente encargado de clasificar un conjunto de ejemplos de validación dado uno o más clasificadores ya entrenados y de obtener métricas que se describen en los párrafos siguientes.
 
