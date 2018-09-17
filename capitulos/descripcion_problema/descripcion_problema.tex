@@ -53,7 +53,34 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
 
 \section{Instancias del problema} \label{section:descripcion-problema,subsection:instancias-del-problema}
 
+%TODO leer laburo de Ali et al. y mechar algo acá
+\paragraph{}\citet{bib-ali-hc-etc} propusieron dos métodos para diseñar matrices ETC (donde se asocia a cada tarea con una máquina mediante su estimación ETC) aleatorias para representar diversos escenarios del HCSP: el método basado en rangos (del inglés \textit{range based}) y el método del coeficiente de variación (del inglés \textit{coefficient of variation}), que difieren en el modelo matemático empleado para definir los valores de heterogeneidad para tareas y máquinas.
 
+\paragraph{}El método basado en rangos define dos rangos, $(1, R_{mach}$ para heterogeneidad de máquinas y $(1, R_{task})$ para heterogeneidad de tareas. Los valores de heterogeneidad para las máquinas ($\tau_{M}$) y las tareas ($\tau_{T}$) son muestreados aleatoriamente usando una distribución uniforme, y la estimación ETC para una tarea $i$ en una máquina $j$ es calculada como $ETC(i,j) = \tau_{T}(i) \times \tau_{M}(j)$. Los autores sugirieron utilizar los valores de la primera fila de la (TABLA ACA) para generar escenarios del HCSP, mientras que \citet{bib-braun} utilizaron los valores de la segunda fila de la (TABLA ACA) al generar un conjunto de escenarios aleatorios de HCSP para su trabajo.
+
+\begin{table}[h!]
+
+    \centering
+    \begin{tabular}{ |p{0.25\linewidth}|p{0.25\linewidth}| } 
+    \hline
+    \textbf{Modelo} & \textbf{Valor}\\
+    \hline
+    solver & lbfgs\\ 
+    \hline
+    alpha & 1e-2\\ 
+    \hline
+    activation & relu\\ 
+    \hline
+    \end{tabular}
+    \caption{ Valores para los parámetros de las redes neuronales, obtenidos mediante el método \textit{GridSearch() de la librería \textit{scikit-learn}}}
+    \label{table:parametros}
+    \end{table}
+
+\paragraph{}Por otra parte, el método del coeficiente de variación usa el cociente entre la desviación estándar y el promedio de los tiempos de ejecución como una medida de la heterogeneidad de las máquinas y de las tareas, y los valores de ETC son generados aleatoriamente usando una distribución uniforme.
+
+\paragraph{}En este trabajo se utilizó un generador de instancias aleatorias del HCSP presentado en \citet{bib-doctorado-nesmachnow}, implementado en C y utilizando únicamente librerías estándar. Este generador implementa el método basado en rangos mencionado anteriormente, recibiendo parámetros relevantes para el escenario de HCSP, como son la dimensión del problema (cantidad de tareas y máquinas involucradas), heterogeneidad de tareas y máquinas, consistencia y el modelo de heterogeneidad utilizado (contemplando tanto los rangos definidos por \citet{bib-ali-hc-etc} como por \citet{bib-braun}).
+
+%TODO agregar formato de las instancias generadas, capaz puede interesar
 
 % se puede construir una matriz con la información del tiempo de ejecución de cada tarea para cada máquina, conocida como matriz \textit{ETC} (del inglés \textit{Expected Time to Compute}). Esta matriz constituye la representación del problema utilizada como entrada para el sistema utilizado en este proyecto de grado.
 
@@ -63,7 +90,7 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
 
  \section{Heurística de referencia} \label{section:descripcion-problema,subsection:heuristica}
  
-\paragraph{}En el algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema de HCSP. De manera particular, la heurística utilizada como referencia en este proyecto emplea a Min-Min como criterio para seleccionar tareas en cada iteración del algoritmo. Según este criterio, se escoge de manera \textit{greedy} a la tarea que pueda ser completada primero. Para seleccionar esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en completar para cada una de las máquinas disponibles y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
+\paragraph{}En el algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema de HCSP. Particularmente, la heurística utilizada como referencia en este proyecto emplea a Min-Min como criterio para seleccionar tareas en cada iteración del algoritmo. Según este criterio, se escoge de manera \textit{greedy} a la tarea que pueda ser completada primero. Para seleccionar esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en completar para cada una de las máquinas disponibles y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
 
 \paragraph{}Adicionalmente, para generar instancias del problema en forma de matrices ETC, se utilizó un programa también extraído de \citet{bib-doctorado-nesmachnow}.
 %  Se comienza con un conjunto \textit{U} de tareas sin asignar, se calcula el mínimo tiempo que cada una puede demorar en completar para cada máquina, y se escoge a aquella tarea que en promedio lleve menos tiempo en completar. Esta tarea es retirada del conjunto \textit{U}, y el proceso se repite hasta que todas las tareas están asignadas.
