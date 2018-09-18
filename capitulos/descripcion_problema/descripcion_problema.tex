@@ -81,6 +81,8 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
 
 \paragraph{}En este trabajo se utilizó un generador de instancias aleatorias del HCSP presentado en \citet{bib-doctorado-nesmachnow}, implementado en C y utilizando únicamente librerías estándar. Este generador implementa el método basado en rangos mencionado anteriormente, recibiendo parámetros relevantes para el escenario de HCSP, como son la dimensión del problema (cantidad de tareas y máquinas involucradas), heterogeneidad de tareas y máquinas, consistencia y el modelo de heterogeneidad utilizado (contemplando tanto los rangos definidos por \citet{bib-ali-hc-etc} como por \citet{bib-braun} como se puede ver en la tabla \ref{table:parametros-etc}).
 
+\paragraph{}El formato de estas instancias del problema es el utilizado por \citet{bib-braun}, un vector columna de $X \times Y$ números en punto flotante (para $X$ tareas e $Y$ máquinas) que representa a la matriz ETC, ordenada por identificador de tarea. En la figura (ACA FIGURA) se muestra un ejemplo del formato de un escenario HCSP con $X$ tareas e $Y$ máquinas.
+
 %TODO agregar formato de las instancias generadas, capaz puede interesar
 
 % se puede construir una matriz con la información del tiempo de ejecución de cada tarea para cada máquina, conocida como matriz \textit{ETC} (del inglés \textit{Expected Time to Compute}). Esta matriz constituye la representación del problema utilizada como entrada para el sistema utilizado en este proyecto de grado.
