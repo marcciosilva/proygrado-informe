@@ -56,29 +56,30 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
 %TODO leer laburo de Ali et al. y mechar algo acá
 \paragraph{}\citet{bib-ali-hc-etc} propusieron dos métodos para diseñar matrices ETC (donde se asocia a cada tarea con una máquina mediante su estimación ETC) aleatorias para representar diversos escenarios del HCSP: el método basado en rangos (del inglés \textit{range based}) y el método del coeficiente de variación (del inglés \textit{coefficient of variation}), que difieren en el modelo matemático empleado para definir los valores de heterogeneidad para tareas y máquinas.
 
-\paragraph{}El método basado en rangos define dos rangos, $(1, R_{mach}$ para heterogeneidad de máquinas y $(1, R_{task})$ para heterogeneidad de tareas. Los valores de heterogeneidad para las máquinas ($\tau_{M}$) y las tareas ($\tau_{T}$) son muestreados aleatoriamente usando una distribución uniforme, y la estimación ETC para una tarea $i$ en una máquina $j$ es calculada como $ETC(i,j) = \tau_{T}(i) \times \tau_{M}(j)$. Los autores sugirieron utilizar los valores de la primera fila de la (TABLA ACA) para generar escenarios del HCSP, mientras que \citet{bib-braun} utilizaron los valores de la segunda fila de la (TABLA ACA) al generar un conjunto de escenarios aleatorios de HCSP para su trabajo.
+\paragraph{}El método basado en rangos define dos rangos, $(1, R_{maquina}$ para heterogeneidad de máquinas y $(1, R_{tarea})$ para heterogeneidad de tareas. Los valores de heterogeneidad para las máquinas ($\tau_{M}$) y las tareas ($\tau_{T}$) son muestreados aleatoriamente usando una distribución uniforme, y la estimación ETC para una tarea $i$ en una máquina $j$ es calculada como $ETC(i,j) = \tau_{T}(i) \times \tau_{M}(j)$. Los autores sugirieron utilizar los valores de la primera fila de la tabla \ref{table:parametros-etc} para generar escenarios del HCSP, mientras que \citet{bib-braun} utilizaron los valores de la segunda fila de la tabla \ref{table:parametros-etc} al generar un conjunto de escenarios aleatorios de HCSP para su trabajo.
 
 \begin{table}[h!]
-
     \centering
-    \begin{tabular}{ |p{0.25\linewidth}|p{0.25\linewidth}| } 
-    \hline
-    \textbf{Modelo} & \textbf{Valor}\\
-    \hline
-    solver & lbfgs\\ 
-    \hline
-    alpha & 1e-2\\ 
-    \hline
-    activation & relu\\ 
-    \hline
-    \end{tabular}
-    \caption{ Valores para los parámetros de las redes neuronales, obtenidos mediante el método \textit{GridSearch() de la librería \textit{scikit-learn}}}
-    \label{table:parametros}
-    \end{table}
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{c c c c c} 
+        \hline
+        \hline
+        \multirow{2}{*}{\textbf{Modelo}} & \multicolumn{2}{c}{\textbf{Heterogeneidad de tareas}} & \multicolumn{2}{c}{\textbf{Heterogeneidad de máquinas}}\\\cline{2-5}
+        & \textbf{Baja} & \textbf{Alta} & \textbf{Baja} & \textbf{Alta}\\
+        \hline
+        \citet{bib-ali-hc-etc} & $R_{tarea} = 10$ & $R_{tarea} = 100000$ & $R_{maquina} = 10$ & $R_{maquina} = 1000$ \\ 
+        \citet{bib-braun} & $R_{tarea} = 10$ & $R_{tarea} = 100000$ & $R_{maquina} = 10$ & $R_{maquina} = 1000$ \\ 
+        \hline
+        \hline
+        \end{tabular}
+    }
+    \caption{Parámetros de los modelos ETC}
+    \label{table:parametros-etc}
+\end{table}
 
 \paragraph{}Por otra parte, el método del coeficiente de variación usa el cociente entre la desviación estándar y el promedio de los tiempos de ejecución como una medida de la heterogeneidad de las máquinas y de las tareas, y los valores de ETC son generados aleatoriamente usando una distribución uniforme.
 
-\paragraph{}En este trabajo se utilizó un generador de instancias aleatorias del HCSP presentado en \citet{bib-doctorado-nesmachnow}, implementado en C y utilizando únicamente librerías estándar. Este generador implementa el método basado en rangos mencionado anteriormente, recibiendo parámetros relevantes para el escenario de HCSP, como son la dimensión del problema (cantidad de tareas y máquinas involucradas), heterogeneidad de tareas y máquinas, consistencia y el modelo de heterogeneidad utilizado (contemplando tanto los rangos definidos por \citet{bib-ali-hc-etc} como por \citet{bib-braun}).
+\paragraph{}En este trabajo se utilizó un generador de instancias aleatorias del HCSP presentado en \citet{bib-doctorado-nesmachnow}, implementado en C y utilizando únicamente librerías estándar. Este generador implementa el método basado en rangos mencionado anteriormente, recibiendo parámetros relevantes para el escenario de HCSP, como son la dimensión del problema (cantidad de tareas y máquinas involucradas), heterogeneidad de tareas y máquinas, consistencia y el modelo de heterogeneidad utilizado (contemplando tanto los rangos definidos por \citet{bib-ali-hc-etc} como por \citet{bib-braun} como se puede ver en la tabla \ref{table:parametros-etc}).
 
 %TODO agregar formato de las instancias generadas, capaz puede interesar
 
