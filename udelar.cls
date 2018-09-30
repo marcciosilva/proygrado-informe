@@ -388,7 +388,7 @@ top=4cm,bottom=3cm,left=4.0cm,right=3.0cm]{geometry} %showframe para ver los mar
 }
 \newcommand\local@monthname{\ifcase\month\or
   Enero\or Febrero\or Marzo\or Abril\or Mayo\or Junio\or
-  Julio\or Agosto\or Setiembre\or Octubre\or Noviembre\or Diciembre\fi}
+  Julio\or Agosto\or Septiembre\or Octubre\or Noviembre\or Diciembre\fi}
 \newcommand\foreign@monthname{\ifcase\month\or
   January\or February\or March\or April\or May\or June\or
   July\or August\or September\or October\or November\or December\fi}

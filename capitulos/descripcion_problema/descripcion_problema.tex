@@ -1,7 +1,7 @@
 \chapter{Descripción del problema} \label{section-descripcion-problema}
 \markright{Descripción del problema}
 
-\paragraph{}Este capítulo presenta una introducción al problema HCSP basada fuertemente en el trabajo de \citet{bib-doctorado-nesmachnow}. Este problema es abordado en el marco de este proyecto y el paradigma de Savant Virtual. En la sección \ref{section:descripcion-problema,subsection:introduccion} se introduce al problema en su contexto, en la sección \ref{section:descripcion-problema,subsection:formulacion-problema} se presenta la formulación del problema, en la sección \ref{section:descripcion-problema,subsection:complejidad-computacional} se analiza la complejidad computacional del HCSP, en la sección \ref{section:descripcion-problema,subsection:estimacion-tiempo-ejecucion} se discute la estimación de tiempos de ejecución utilizada en las instancias del problema, en la sección \ref{section:descripcion-problema,subsection:instancias-del-problema} se analiza la estructura de las instancias del problema utilizadas durante este Proyecto de Grado y finalmente en la sección \ref{section:descripcion-problema,subsection:heuristica} se
+\paragraph{}Este capítulo presenta una introducción al problema HCSP basada fuertemente en el trabajo de \citet{bib-doctorado-nesmachnow}. Este problema es abordado en el marco de este proyecto y el paradigma de Savant Virtual. En la sección \ref{section:descripcion-problema,subsection:introduccion} se introduce al problema en su contexto, en la sección \ref{section:descripcion-problema,subsection:formulacion-problema} se presenta la formulación del problema, en la sección \ref{section:descripcion-problema,subsection:complejidad-computacional} se analiza la complejidad computacional del HCSP, en la sección \ref{section:descripcion-problema,subsection:estimacion-tiempo-ejecucion} se discute la estimación de tiempos de ejecución utilizada en las instancias del problema, en la sección \ref{section:descripcion-problema,subsection:instancias-del-problema} se analiza la estructura de las instancias del problema utilizadas en este Proyecto de Grado y finalmente en la sección \ref{section:descripcion-problema,subsection:heuristica} se
 presenta la heurística de referencia utilizada a la hora de llevar a cabo el aprendizaje automático.
 
 \section{Introducción} \label{section:descripcion-problema,subsection:introduccion}
@@ -15,7 +15,7 @@ presenta la heurística de referencia utilizada a la hora de llevar a cabo el ap
 \paragraph{}Los problemas de planificación en sistemas multiprocesador han sido ampliamente estudiados en el campo de la investigación operativa y numerosos métodos han sido propuestos para generar planificaciones precisas en tiempos razonables (\citet{bib-rewini-scheduling}, \citet{bib-leung-handbook}). En su formulación clásica, los problemas de planificación asumen un entorno computacional compuesto por recursos homogéneos. Sin embargo, en la decada de 1990 la comunidad de investigadores empezó a prestarle atención a problemas en entornos HC, dada la popularización de la computación distribuida y el uso cada vez más frecuente de clusters heterogéneos (\citet{bib-freund}, \citet{bib-eshaghian-heterogeneous}).
 
 \paragraph{}Los problemas tradicionales de planificación son NP-difíciles (\citet{bib-garey}), por lo cual los métodos clásicos y exactos sólo son útiles para resolver instancias reducidas del problema, dado que su poca eficiencia hace que sea inviable aplicarlos para problemas de gran dimensión con tiempos razonables de ejecución. Al tratar con ambientes computacionales de grandes dimensiones, las heurísticas ad-hoc y metaheurísticas se han destacado como métodos prometedores para resolver problemas de HC. Aunque estos métodos no garantizan obtener una solución óptima para el problema, obtienen planificaciones cercanas a las óptimas que usualmente satisfacen los requerimientos de eficiencia para escenarios reales, con tiempos razonables.
-Entre un conjunto amplio de técnicas metaheurísticas modernas para optimizar, los algoritmos evolutivos (AE) (\citet{bib-back-handbook}) han surgido como formas flexibles, robustas y eficaces para resolver el problema de planificación de computación heterogénea (o HCSP, del inglés \textit{heterogeneous computing scheduling problem}). Para mejorar aún más la eficiencia de los AEs, las implementaciones paralelas se volvieron una opción popular para agilizar la búsqueda, posibilitando la obtención de resultados de alta calidad en tiempos de ejecución razonables incluso para problemas de optimización difíciles de resolver (\citet{bib-cantu-genetic-algorithms}, \citet{bib-alba-genetic-algorithms}).
+% Entre un conjunto amplio de técnicas metaheurísticas modernas para optimizar, los algoritmos evolutivos (AE) (\citet{bib-back-handbook}) han surgido como formas flexibles, robustas y eficaces para resolver el problema de planificación de computación heterogénea (o HCSP, del inglés \textit{heterogeneous computing scheduling problem}). Para mejorar aún más la eficiencia de los AEs, las implementaciones paralelas se volvieron una opción popular para agilizar la búsqueda, posibilitando la obtención de resultados de alta calidad en tiempos de ejecución razonables incluso para problemas de optimización difíciles de resolver (\citet{bib-cantu-genetic-algorithms}, \citet{bib-alba-genetic-algorithms}).
 
 \section{Formulación del problema} \label{section:descripcion-problema,subsection:formulacion-problema}
 
@@ -56,7 +56,7 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
 %TODO leer laburo de Ali et al. y mechar algo acá
 \paragraph{}\citet{bib-ali-hc-etc} propusieron dos métodos para diseñar matrices ETC (donde se asocia a cada tarea con una máquina mediante su estimación ETC) aleatorias para representar diversos escenarios del HCSP: el método basado en rangos (del inglés \textit{range based}) y el método del coeficiente de variación (del inglés \textit{coefficient of variation}), que difieren en el modelo matemático empleado para definir los valores de heterogeneidad para tareas y máquinas.
 
-\paragraph{}El método basado en rangos define dos rangos, $(1, R_{maquina}$ para heterogeneidad de máquinas y $(1, R_{tarea})$ para heterogeneidad de tareas. Los valores de heterogeneidad para las máquinas ($\tau_{M}$) y las tareas ($\tau_{T}$) son muestreados aleatoriamente usando una distribución uniforme y la estimación ETC para una tarea $i$ en una máquina $j$ es calculada como $ETC(i,j) = \tau_{T}(i) \times \tau_{M}(j)$. Los autores sugirieron utilizar los valores de la primera fila de la tabla \ref{table:parametros-etc} para generar escenarios del HCSP, mientras que \citet{bib-braun} utilizaron los valores de la segunda fila de la tabla \ref{table:parametros-etc} al generar un conjunto de escenarios aleatorios de HCSP para su trabajo.
+\paragraph{}El método basado en rangos define dos rangos, $(1, R_{maquina}$ para heterogeneidad de máquinas y $(1, R_{tarea})$ para heterogeneidad de tareas. Los valores de heterogeneidad para las máquinas ($\tau_{M}$) y las tareas ($\tau_{T}$) son muestreados aleatoriamente usando una distribución uniforme y la estimación ETC para una tarea $i$ en una máquina $j$ es calculada como $ETC(i,j) = \tau_{T}(i) \times \tau_{M}(j)$. \citet{bib-ali-hc-etc} sugirieron utilizar los valores de la primera fila de la tabla \ref{table:parametros-etc} para generar escenarios del HCSP, mientras que \citet{bib-braun} utilizaron los valores de la segunda fila de la tabla \ref{table:parametros-etc} al generar un conjunto de escenarios aleatorios de HCSP para su trabajo.
 
 \begin{table}[h!]
     \centering
@@ -81,21 +81,32 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
 
 \paragraph{}En este trabajo se utilizó un generador de instancias aleatorias del HCSP presentado en \citet{bib-doctorado-nesmachnow}, implementado en C y utilizando únicamente librerías estándar. Este generador implementa el método basado en rangos mencionado anteriormente, recibiendo parámetros relevantes para el escenario de HCSP, como son la dimensión del problema (cantidad de tareas y máquinas involucradas), heterogeneidad de tareas y máquinas, consistencia y el modelo de heterogeneidad utilizado (contemplando tanto los rangos definidos por \citet{bib-ali-hc-etc} como por \citet{bib-braun} como se puede ver en la tabla \ref{table:parametros-etc}).
 
-\paragraph{}El formato de estas instancias del problema es el utilizado por \citet{bib-braun}, un vector columna de $X \times Y$ números en punto flotante (para $X$ tareas e $Y$ máquinas) que representa a la matriz ETC, ordenada por identificador de tarea. En la figura (ACA FIGURA) se muestra un ejemplo del formato de un escenario HCSP con $X$ tareas e $Y$ máquinas.
+\paragraph{}El formato de estas instancias del problema es el utilizado por \citet{bib-braun}, un vector columna de $X \times Y$ números en punto flotante (para $X$ tareas e $Y$ máquinas) que representa a la matriz ETC, ordenada por identificador de tarea. En la figura \ref{fig:formato-escenario-hcsp} se muestra un ejemplo del formato de un escenario HCSP con $X$ tareas e $Y$ máquinas.
+\\
 
-%TODO agregar formato de las instancias generadas, capaz puede interesar
+\centerline{
+    \fbox{
+        \begin{minipage}{15em}
+            \paragraph{}$ETC(t_1, m_1)$
+            \paragraph{}$ETC(t_1, m_2)$
+            \paragraph{}\dots
+            \paragraph{}$ETC(t_1, m_Y)$
+            \paragraph{}$ETC(t_2, m_1)$
+            \paragraph{}$ETC(t_2, m_2)$
+            \paragraph{}\dots
+            \paragraph{}$ETC(t_X, m_1)$
+            \paragraph{}$ETC(t_X, m_Y)$
+            \captionof{figure}{Formato de escenario HCSP}
+            \label{fig:formato-escenario-hcsp}
+        \end{minipage}
+    }
+}
 
-% se puede construir una matriz con la información del tiempo de ejecución de cada tarea para cada máquina, conocida como matriz \textit{ETC} (del inglés \textit{Expected Time to Compute}). Esta matriz constituye la representación del problema utilizada como entrada para el sistema utilizado en este proyecto de grado.
-
-
-
-% \paragraph{}Se utilizó un programa generador de instancias del problema, extraído de \citet{bib-doctorado-nesmachnow}. 
-
- \section{Heurística de referencia} \label{section:descripcion-problema,subsection:heuristica}
+\section{Heurística de referencia} \label{section:descripcion-problema,subsection:heuristica}
  
-\paragraph{}En el algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema de HCSP. Particularmente, la heurística utilizada como referencia en este proyecto emplea a Min-Min como criterio para seleccionar tareas en cada iteración del algoritmo. Según este criterio, se escoge de manera \textit{greedy} a la tarea que pueda ser completada primero. Para seleccionar esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en completar para cada una de las máquinas disponibles y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
+\paragraph{}En el algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema de HCSP. Particularmente, la heurística utilizada como referencia en este proyecto emplea al algoritmo \textit{Min-Min} como criterio para seleccionar tareas en cada iteración del algoritmo. Según este criterio, se escoge de manera \textit{greedy} a la tarea que pueda ser completada primero. Para seleccionar esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en completar para cada una de las máquinas disponibles y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
 
-\paragraph{}Adicionalmente, para generar instancias del problema en forma de matrices ETC, se utilizó un programa también extraído de \citet{bib-doctorado-nesmachnow}.
+\paragraph{}Como se adelantó en el capítulo \ref{section-introduccion}, en este trabajo se evalúa el desempeño de las redes neuronales en el marco de SV. Min-Min fue la heurística de referencia escogida para entrenar a los clasificadores de aprendizaje automático utilizados en este Proyecto de Grado.
  
  % TODO ¿tal vez incluir el código en un apéndice?
  
@@ -104,7 +115,6 @@ Como se ve en la sección \ref{section-trabajos-relacionados-savant}, el SV es u
  \begin{algorithm}[H]
 \SetAlgoLined
 \KwIn{conjunto de tareas sin asignar y conjunto de máquinas}
-%\KwResult{Task assignment}
  \While{quedan tareas por asignar}{
  	seleccionar tarea de acuerdo a criterio elegido\;
   \For{cada tarea a asignar y cada máquina}{
