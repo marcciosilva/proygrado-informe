@@ -15,33 +15,5 @@
 
 \paragraph{} Luego de generados los archivos, se requiere cambiar la estructura de los datos contenidos en ellos para obtener la estructura de datos con la cual los clasificadores se pueden entrenar y validar. Así mismo, se requiere generar un numero importante de instancias del problema para entrenamiento y validación, las cuales serán pares de archivos diferentes. Por este motivo se cuenta con un componente que se encarga de procesar instancias del problema y sus soluciones para convertirlas en un archivo único con un formato CSV procesable por librerías de manejo de datos. De manera adicional, este componente ofrece al usuario la posibilidad de determinar la ubicación de los datos de entrada y la ubicación de los nuevos archivos a generar. Así, este archivo CSV contiene las instancias del problema y sus soluciones organizadas en instancias de entrenamiento o validación para los clasificadores.
 
-\section{Generación de clasificadores}
 
-\paragraph{} Fue necesario implementar un componente dedicado a generar clasificadores de aprendizaje automático con el fin de evaluar su desempeño. Este componente carga datos generados por el componente mencionado en la sección anterior y, utilizando herramientas de \textit{scikit-learn}, se encarga de generar un clasificador de aprendizaje automático, ya sea SVM o una red neuronal. 
-
-\paragraph{} Desde el punto de vista del entrenamiento de los clasificadores, se optó por utilizar la información de cada tarea en forma individual, sin tomar en cuenta a la matriz ETC del problema en su totalidad, en parte debido a estudios tempranos realizados que arrojaron resultados pobres en términos de precisión y makespan, sumado al precedente dado por en Dorronsoro et al. (2013), investigación en la cual también fue descartada la utilización de la matriz ETC completa. De esta manera, por ejemplo, si se tiene una instancia del problema de $512$ máquinas y $16$ tareas junto a su solución, esto representa $512$ ejemplos de entrenamiento. Esta forma de utilizar a los ejemplos de entrenamiento se traduce en menores tiempos de entrenamiento y además permite la escalabilidad de los clasificadores directamente, al darse la posibilidad de su aplicación a otras dimensiones del problema en términos de tareas, manteniendo fija la cantidad de máquinas.  Esto es posible, dado que si se tiene una dimensión del problema de $m \times n$, siendo $m$ la cantidad de tareas y $n$ la cantidad de máquinas, por ejemplo en el caso de una red neuronal, el clasificador entrenado tendrá $n$ neuronas de entrada, por lo que será aplicable a cualquier valor de $m$, ya que un ejemplo de entrenamiento bajo este paradigma siempre tendrá el mismo tamaño. Además, se considera algo realista que exista una mayor variabilidad en la cantidad de tareas y no en la cantidad de máquinas, dado que las máquinas son un recurso rígido con poca volatilidad generalmente.
-
-\paragraph{} De manera adicional, en lo que respecta a la arquitectura de las redes, se sigue la heurística recomendada por Lane (2017), dada la falta de consenso existente con respecto a la manera óptima de determinar la cantidad de neuronas en las capas ocultas de una red neuronal de acuerdo a los casos de uso en los que se apliquen dichos clasificadores. Según esta heurística, la cantidad de neuronas en una capa oculta (o $N_h$) se determina con la siguiente fórmula $N_h = \frac{N_s} {(\alpha * (N_i + N_o))}$, siendo:
-
-\paragraph{} $N_i$ = cantidad de neuronas de entrada
-\paragraph{}$N_o$ = cantidad de neuronas de salida
-\paragraph{}$N_s$ = cantidad de instancias de entrenamiento
-\paragraph{}$\alpha$ = factor de escalamiento arbitrario, con valor igual a 2 para este estudio
-
-\paragraph{} Por otra parte, dado que en la generación de instancias del problema los valores de la matriz ETC para dos problemas distintos no necesariamente mantienen una relación normal, se vuelve necesario escalar los datos utilizados a la hora de entrenar o utilizar clasificadores.
-
-\paragraph{} Para esto, es utilizado un clasificador de tipo \textit{pipeline}, ofrecido por la librería \textit{scikit-learn}. Este componente de software permite que sean aplicadas una serie de transformaciones a los datos de manera previa a ser utilizados por el clasificador. A su vez, el clasificador puede mantener la configuración que el usuario prefiera, tomando información de la arquitectura deseada para una red neuronal o parámetros de inicialización en caso de optar por utilizar una SVM. 
-
-\paragraph{}En particular fueron utilizadas las clases \textit{neural\_network.MLPClassifier} y \textit{svm.SVC} de \textit{scikit-learn} para construir las redes neuronales y la SVM, respectivamente. 
-
-\paragraph{} Para encontrar los mejores parámetros para comenzar con las pruebas, fue utilizado \textit{model\_selection.GridSearchCV} que permite seleccionar los mejores parámetros para entrenar un modelo. 
-
-\paragraph{} Finalmente, este componente se encarga de persistir los clasificadores generados, proveyendo una interfaz al usuario para realizar todo lo mencionado de manera automática dado un conjunto de ejemplos de entrenamiento.
-
-\section{Clasificación}
-
-\paragraph{} En lo que respecta a la clasificación, fue implementado un componente encargado de clasificar un conjunto de ejemplos de validación dado uno o más clasificadores ya entrenados y de obtener métricas que se describen en los párrafos siguientes.
-
-\paragraph{} Dentro de las métricas calculadas, se encuentran el makespan esperado y el obtenido mediante predicciones. Esta métrica es considerada como fundamental para evaluar el rendimiento de los clasificadores, dado que más allá de la precisión, es necesario evaluar la métrica fundamental del problema HCSP, que es el tiempo insumido por la máquina que finaliza su ejecución por último.
-
-\paragraph{} Además, se calcula el porcentaje de ocasiones en las que el clasificador, al predecir erróneamente, escoge una máquina más rápida (constituyendo una acción avariciosa o \textit{greedy}). Esta métrica se calcula con el fin de evaluar si un clasificador se alejó de lo esperado en términos de precisión y makespan por haber aprendido a comportarse de manera avariciosa y por lo tanto aprendiendo a maximizar el beneficio local para cada tarea.
+\input{capitulos/implementacion/creacion_entrenamiento}
