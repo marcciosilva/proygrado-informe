@@ -15,5 +15,13 @@
 
 \paragraph{} Luego de generados los archivos, se requiere cambiar la estructura de los datos contenidos en ellos para obtener la estructura de datos con la cual los clasificadores se pueden entrenar y validar. Así mismo, se requiere generar un numero importante de instancias del problema para entrenamiento y validación, las cuales serán pares de archivos diferentes. Por este motivo se cuenta con un componente que se encarga de procesar instancias del problema y sus soluciones para convertirlas en un archivo único con un formato CSV procesable por librerías de manejo de datos. De manera adicional, este componente ofrece al usuario la posibilidad de determinar la ubicación de los datos de entrada y la ubicación de los nuevos archivos a generar. Así, este archivo CSV contiene las instancias del problema y sus soluciones organizadas en instancias de entrenamiento o validación para los clasificadores.
 
-
 \input{capitulos/implementacion/creacion_entrenamiento}
+
+
+\section{Clasificación}
+
+\paragraph{} En lo que respecta a la clasificación, fue implementado un componente encargado de clasificar un conjunto de ejemplos de validación dado uno o más clasificadores ya entrenados y de obtener métricas que se describen en los párrafos siguientes.
+
+\paragraph{} Dentro de las métricas calculadas, se encuentran el makespan esperado y el obtenido mediante predicciones. Esta métrica es considerada como fundamental para evaluar el rendimiento de los clasificadores, dado que más allá de la precisión, es necesario evaluar la métrica fundamental del problema HCSP, que es el tiempo insumido por la máquina que finaliza su ejecución por último.
+
+\paragraph{} Además, se calcula el porcentaje de ocasiones en las que el clasificador, al predecir erróneamente, escoge una máquina más rápida (constituyendo una acción avariciosa o \textit{greedy}). Esta métrica se calcula con el fin de evaluar si un clasificador se alejó de lo esperado en términos de precisión y makespan por haber aprendido a comportarse de manera avariciosa y por lo tanto aprendiendo a maximizar el beneficio local para cada tarea.
