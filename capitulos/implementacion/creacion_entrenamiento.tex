@@ -1,10 +1,10 @@
-\section{Generación de clasificadores y entrenamiento}
+\section{Generación de clasificadores y entrenamiento} \label{chapter-implementacion:clasificadores}
 
 \paragraph{} Se implementó un componente de software dedicado a crear, entrenar y persistir clasificadores de aprendizaje automático. Este componente permite seleccionar como clasificador de aprendizaje automático a utilizar \textit{SVM} o redes neuronales.
 
 \paragraph{} Se utiliza la librería \textit{Pandas}\cite{bib-pandas} de \textit{Python}. Esta librería simplifica el manejo de datos mediante estructuras de datos indizadas, proporcionando un conjunto de métodos que permiten realizar operaciones sobre éstas estructuras para facilitar el análisis de los datos, haciendo un uso eficiente de los recursos computacionales sobre los que se ejecute.
 
-\paragraph{} Tomando como referencia el trabajo de \citet{savant-original}, se utilizó cada fila de la matriz ETC del problema como un conjunto de ejemplos de entrenamiento. Esto quiere decir que para una matriz de $512$ tareas y $16$ máquinas, se obtendrán $512$ ejemplos de entrenamiento, cada uno clasificado en una de las $16$ clases objetivo. Estas clases corresponden una a una con las máquinas asignadas por el algoritmo $Min-Min$. La figura \ref{table:datosentrenamiento} muestra un ejemplo de matriz ETC de $512$ tareas y $16$ máquinas, cada tarea con su máquina asignada siendo esta asignación la clasificación del ejemplo de entrenamiento.
+\paragraph{} Como se mencionó en la sección \ref{chapter-implementacion:data}, se utilizó cada fila de la matriz ETC del problema como los atributos para un único ejemplo de entrenamiento. Esto quiere decir que para una matriz de $512$ tareas y $16$ máquinas, se obtendrán $512$ ejemplos de entrenamiento, cada uno clasificado en una de las $16$ clases objetivo. Estas clases corresponden una a una con las máquinas asignadas por el algoritmo $Min-Min$. La figura \ref{table:datosentrenamiento} muestra un ejemplo de matriz ETC de $512$ tareas y $16$ máquinas, cada tarea con su máquina asignada siendo esta asignación la clasificación del ejemplo de entrenamiento.
 
 
 \begin{figure}[ht!]

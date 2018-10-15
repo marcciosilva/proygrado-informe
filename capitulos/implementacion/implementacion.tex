@@ -1,24 +1,41 @@
 \chapter{Implementación} \label{chapter-implementation}
 \markright{Implementación}
 
-\paragraph{} En esta sección será presentado el sistema de software construido utilizando Python y la biblioteca de aprendizaje automático scikit-learn.
+\paragraph{} En este capítulo se presenta el sistema de software construido para evaluar el rendimiento comparativo de las redes neuronales y SVM en términos del aprendizaje del problema HCSP. Este sistema fue implementado utilizando Python y la biblioteca de aprendizaje automático scikit-learn.
 
-\paragraph{} La arquitectura del sistema está conformada por componentes que tienen interacción directamente con la capa de persistencia, donde se alojan ejemplos de entrenamiento en diversos formatos y clasificadores de aprendizaje automático.
+\paragraph{} La arquitectura del sistema está conformada por tres componentes fundamentales. El primero es el módulo encargado de generar los datos utilizados en forma de ejemplos de entrenamiento. Este módulo se describe en la sección \ref{chapter-implementacion:data}. También se tiene un módulo dedicado exclusivamente a la generación de clasificadores, tanto redes neuronales como SVM. Este módulo se describe en la sección \ref{chapter-implementacion:clasificadores}. Finalmente, descrito en la sección \ref{chapter-implementacion:clasificacion}, se tiene un módulo encargado de clasificar nuevas instancias del problema, es decir sin una clasificación asociada.
 
-\section{Generación de instancias del problema e instancias de entrenamiento}
+% que tienen interacción directamente con una capa de persistencia, donde se alojan ejemplos de entrenamiento en diversos formatos, además de clasificadores de aprendizaje automático.
+% TODO agregar diagrama arquitectónico o algo.
 
-\paragraph{} Al trabajar bajo el paradigma de aprendizaje automático se vuelve necesario contar con una manera accesible y automatizable de generar ejemplos de entrenamiento, cada uno constituido por una instancia del problema y su correspondiente solución esperada. Dichos ejemplos son utilizados para entrenar los clasificadores a utilizar. También se generan ejemplos del problema con el objetivo de evaluar el rendimiento de los clasificadores entrenados previamente.
 
-\paragraph{} Se desarrolló un componente para realizar a demanda la generación de ejemplos de entrenamiento y de validación. Para cada ejemplo de entrenamiento es generada una instancia del problema haciendo uso de un algoritmo generador de instancias del problema HCSP extraído de Nesmachnow (2010). Posteriormente, es aplicado el algoritmo Min-Min para generar una solución a dicha instancia del problema. Finalmente, son obtenidos dos archivos para cada ejemplo de entrenamiento, conteniendo las instancias de entrenamiento o validación y la solución provista por el algoritmo Min-Min.
 
-\paragraph{} Este componente de software, como el resto de los aquí mencionados, fue desarrollado de manera de permitir su ejecución automatizada, algo que favorece la generación de ejemplos de entrenamiento a gran escala y de manera paralela mediante el uso de hilos. Además, se ofrece al usuario la posibilidad de determinar cuántas instancias del problema (con sus correspondientes soluciones) serán generadas, dónde se persisten y las características de los tipos de instancias del problema a generar, como por ejemplo la dimensión de las mismas.
+\section{Generación de instancias del problema e instancias de entrenamiento} \label{chapter-implementacion:data}
 
-\paragraph{} Luego de generados los archivos, se requiere cambiar la estructura de los datos contenidos en ellos para obtener la estructura de datos con la cual los clasificadores se pueden entrenar y validar. Así mismo, se requiere generar un numero importante de instancias del problema para entrenamiento y validación, las cuales serán pares de archivos diferentes. Por este motivo se cuenta con un componente que se encarga de procesar instancias del problema y sus soluciones para convertirlas en un archivo único con un formato CSV procesable por librerías de manejo de datos. De manera adicional, este componente ofrece al usuario la posibilidad de determinar la ubicación de los datos de entrada y la ubicación de los nuevos archivos a generar. Así, este archivo CSV contiene las instancias del problema y sus soluciones organizadas en instancias de entrenamiento o validación para los clasificadores.
+\paragraph{} Dado el planteo del problema HCSP, surgen dos maneras claras de utilizar una instancia del problema (dado por una matriz ETC) y su resolución (una planificación) en el contexto de aprendizaje automático. Una opción implica tomar a la matriz ETC completa como entrada al clasificador de elección, y hacer que la salida esperada sea la planificación, es decir todas las asignaciones tarea-máquina esperadas. Esto constituye un problema de clasificación multiclase, y la desventaja principal que presenta es la de no permitir escalar en términos de máquinas o tareas. Esto implica que si un clasificador es entrenado para aprender a resolver el problema HCSP con instancias del problema de dimensión $M \times N$, no será aplicable para ninguna otra dimensión. La otra opción que se presenta, tomando como referencia el trabajo de \citet{savant-original}, es la de descomponer a una matriz ETC en varios ejemplos de entrenamiento. Por lo tanto, dado un ejemplo de entrenamiento bajo este paradigma, se tiene a la información asociada únicamente a una tarea como la entrada, y a la asignación tarea-máquina de esa tarea como la salida esperada. Esto causa que una instancia del problema (con su planificación asociada) de dimensión $M \times N$ se convierta en $M$ potenciales ejemplos de entrenamiento, y proporciona la posibilidad de escalar en términos de la cantidad de tareas a ejecutar. Esta oportunidad surge dado el hecho de que ahora un ejemplo de entrenamiento está limitado únicamente por la cantidad de máquinas, y se presenta con más detalle en la sección \ref{chapter-implementacion:clasificadores}.
+% matriz entera
+% matriz parcial
+
+
+\paragraph{} Con el objetivo de generar ejemplos de entrenamiento y validación para nutrir y evaluar a los clasificadores construidos, fue necesario desarrollar un componente de software que pudiera hacerlo a demanda. Este componente está conformado fundamentalmente por scripts, y en la Figura \ref{fig:diagrama-datos} se puede ver un diagrama de secuencia donde se explicita su funcionamiento. 
+
+\paragraph{} Inicialmente, se utiliza un script extraído de \citet{bib-doctorado-nesmachnow} para generar instancias del problema, y se genera una solución para dicha instancia utilizando una implementación de Min-Min. % TODO tal vez agregar implementación en apéndice.
+Todo esto es persistido directamente al sistema de archivos de manera iterativa, de acuerdo a la cantidad de ejemplos de entrenamiento que se deseen generar.
+Una vez finalizada esta etapa, es necesario modificar la estructura de los datos generados, de manera de obtener aquella estructura soportada por los clasificadores de aprendizaje automático. Por lo tanto, se procede a tomar cada par constituido por una instancia del problema y su planificación esperada, y se generan tantos ejemplos de entrenamiento como tareas existan en la instancia del problema. Es decir que para una instancia del problema de dimensión $M \times N$ tendremos $M$ ejemplos de entrenamiento. Finalmente, se agrupan estos ejemplos de entrenamiento y se persisten en formato CSV para su uso posterior. Este formato es utilizado por ser el estándar requerido por las librerías de manejo de datos utilizadas.
+
+\textsc{\begin{figure}[ht!]
+	\centering
+    \includegraphics[width=.9\linewidth]{imagenes/implementacion/diagrama-datos.png}
+	\caption{Diagrama de secuencia de generación de ejemplos de entrenamiento.}
+	\label{fig:diagrama-datos}
+\end{figure}}
+
+\paragraph{} Este componente de software, como el resto de los aquí mencionados, fue desarrollado de manera de permitir su ejecución automatizada, a pesar de existir un usuario presente en el diagrama de secuencia. Dicho usuario puede bien ser un usuario final o un script encargado de invocar a este sistema. La posibilidad de automatización favorece la generación de ejemplos de entrenamiento a gran escala y de manera paralela mediante el uso de hilos. Además, se ofrece al usuario la posibilidad de determinar cuántas instancias del problema (con sus correspondientes soluciones) serán generadas, dónde se persisten y las características de los tipos de instancias del problema a generar, como por ejemplo la dimensión de las mismas.
 
 \input{capitulos/implementacion/creacion_entrenamiento}
 
 
-\section{Clasificación}
+\section{Clasificación} \label{chapter-implementacion:clasificacion}
 
 \paragraph{} En lo que respecta a la clasificación, fue implementado un componente encargado de clasificar un conjunto de ejemplos de validación dado uno o más clasificadores ya entrenados y de obtener métricas que se describen en los párrafos siguientes.
 
