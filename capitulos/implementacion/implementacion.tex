@@ -1,27 +1,14 @@
 \chapter{Implementación} \label{chapter-implementation}
 \markright{Implementación}
 
-\paragraph{} En esta sección será presentado el sistema de software construido utilizando Python y la biblioteca de aprendizaje automático scikit-learn.
+\paragraph{} En este capítulo se presenta el sistema de software construido para evaluar el rendimiento comparativo de las redes neuronales y SVM en términos del aprendizaje del problema HCSP. Este sistema fue implementado utilizando \textit{Python} y la biblioteca de aprendizaje automático \textit{Scikit-Learn}, entre otras.
 
-\paragraph{} La arquitectura del sistema está conformada por componentes que tienen interacción directamente con la capa de persistencia, donde se alojan ejemplos de entrenamiento en diversos formatos y clasificadores de aprendizaje automático.
+\paragraph{} La arquitectura del sistema está conformada por tres componentes fundamentales. El primero es el módulo encargado de generar los datos utilizados en forma de ejemplos de entrenamiento. Este módulo se describe en la sección \ref{chapter-implementacion:data}. También se tiene un módulo dedicado exclusivamente a la generación de clasificadores, tanto redes neuronales como SVM. Este módulo se describe en la sección \ref{chapter-implementacion:clasificadores}. Finalmente, descrito en la sección \ref{chapter-implementacion:clasificacion}, se tiene un módulo encargado de clasificar nuevas instancias del problema, es decir sin una clasificación asociada.
 
-\section{Generación de instancias del problema e instancias de entrenamiento}
+% TODO agregar diagrama arquitectónico o algo.
 
-\paragraph{} Al trabajar bajo el paradigma de aprendizaje automático se vuelve necesario contar con una manera accesible y automatizable de generar ejemplos de entrenamiento, cada uno constituido por una instancia del problema y su correspondiente solución esperada. Dichos ejemplos son utilizados para entrenar los clasificadores a utilizar. También se generan ejemplos del problema con el objetivo de evaluar el rendimiento de los clasificadores entrenados previamente.
-
-\paragraph{} Se desarrolló un componente para realizar a demanda la generación de ejemplos de entrenamiento y de validación. Para cada ejemplo de entrenamiento es generada una instancia del problema haciendo uso de un algoritmo generador de instancias del problema HCSP extraído de Nesmachnow (2010). Posteriormente, es aplicado el algoritmo Min-Min para generar una solución a dicha instancia del problema. Finalmente, son obtenidos dos archivos para cada ejemplo de entrenamiento, conteniendo las instancias de entrenamiento o validación y la solución provista por el algoritmo Min-Min.
-
-\paragraph{} Este componente de software, como el resto de los aquí mencionados, fue desarrollado de manera de permitir su ejecución automatizada, algo que favorece la generación de ejemplos de entrenamiento a gran escala y de manera paralela mediante el uso de hilos. Además, se ofrece al usuario la posibilidad de determinar cuántas instancias del problema (con sus correspondientes soluciones) serán generadas, dónde se persisten y las características de los tipos de instancias del problema a generar, como por ejemplo la dimensión de las mismas.
-
-\paragraph{} Luego de generados los archivos, se requiere cambiar la estructura de los datos contenidos en ellos para obtener la estructura de datos con la cual los clasificadores se pueden entrenar y validar. Así mismo, se requiere generar un numero importante de instancias del problema para entrenamiento y validación, las cuales serán pares de archivos diferentes. Por este motivo se cuenta con un componente que se encarga de procesar instancias del problema y sus soluciones para convertirlas en un archivo único con un formato CSV procesable por librerías de manejo de datos. De manera adicional, este componente ofrece al usuario la posibilidad de determinar la ubicación de los datos de entrada y la ubicación de los nuevos archivos a generar. Así, este archivo CSV contiene las instancias del problema y sus soluciones organizadas en instancias de entrenamiento o validación para los clasificadores.
+\input{capitulos/implementacion/generacion_datos}
 
 \input{capitulos/implementacion/creacion_entrenamiento}
 
-
-\section{Clasificación}
-
-\paragraph{} En lo que respecta a la clasificación, fue implementado un componente encargado de clasificar un conjunto de ejemplos de validación dado uno o más clasificadores ya entrenados y de obtener métricas que se describen en los párrafos siguientes.
-
-\paragraph{} Dentro de las métricas calculadas, se encuentran el makespan esperado y el obtenido mediante predicciones. Esta métrica es considerada como fundamental para evaluar el rendimiento de los clasificadores, dado que más allá de la precisión, es necesario evaluar la métrica fundamental del problema HCSP, que es el tiempo insumido por la máquina que finaliza su ejecución por último.
-
-\paragraph{} Además, se calcula el porcentaje de ocasiones en las que el clasificador, al predecir erróneamente, escoge una máquina más rápida (constituyendo una acción avariciosa o \textit{greedy}). Esta métrica se calcula con el fin de evaluar si un clasificador se alejó de lo esperado en términos de precisión y makespan por haber aprendido a comportarse de manera avariciosa y por lo tanto aprendiendo a maximizar el beneficio local para cada tarea.
+\input{capitulos/implementacion/clasificacion}
