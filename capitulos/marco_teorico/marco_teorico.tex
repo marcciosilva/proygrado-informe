@@ -11,7 +11,7 @@ En términos formales, el concepto de que un programa aprenda es puesto en palab
 \paragraph{}Los algoritmos de aprendizaje automático pueden ser clasificados en algoritmos de aprendizaje supervisado y no supervisado, en función de la necesidad de la existencia de datos previos que oficien de experiencias.
 En el aprendizaje supervisado, las entradas del algoritmo son ejemplos de experiencias (conocidos como datos de entrenamiento) y sus respectivas salidas esperadas.
 De tal manera, el algoritmo aprende reglas generales de mapeo entre entradas y salidas.
-Ejemplos de algoritmos de aprendizaje supervisado son las \textit{redes neuronales con propagación hacia atrás} , así como las \textit{máquinas de soporte vectorial} o los \textit{árboles de decisión}. 
+Ejemplos de algoritmos de aprendizaje supervisado son las redes neuronales con propagación hacia atrás (dado su empleo del algoritmo \textit{Backpropagation}), así como las máquinas de soporte vectorial o los árboles de decisión. 
  En algoritmos no supervisados no se ofrecen las salidas esperadas en los datos de entrenamiento; los algoritmos detectan patrones en los datos y generan agrupaciones de los mismos en base a ello.
 Dadas estas agrupaciones, surge algo equivalente a una clasificación, calculada en base a la similaridad que tenga un nuevo ejemplo con aquellos ejemplos de entrenamiento ya agrupados.
 El algoritmo \textit{K-Means} es un ejemplo de algoritmo de aprendizaje automático no supervisado. 
@@ -20,17 +20,17 @@ El algoritmo \textit{K-Means} es un ejemplo de algoritmo de aprendizaje automát
 Dentro del aprendizaje automático, el aprendizaje por refuerzo se ocupa de estudiar cómo agentes de software toman acciones en su entorno con el objetivo de maximizar una recompensa.
 Un ejemplo de este tipo de algoritmos es \textit{Q-Learning}, que involucra el aprendizaje de una política que le indica al agente la decisión a tomar bajo ciertas circunstancias.
 
-\paragraph{}Los problemas estudiados en aprendizaje automático pueden ser de clasificación o de regresión.
+\paragraph{}De manera adicional, los problemas estudiados en aprendizaje automático pueden ser de clasificación o de regresión.
 Un problema se considera de clasificación cuando se puede clasificar a las instancias del problema de acuerdo a valores de un dominio discreto, como en el ejemplo de reconocimiento de objetos en imágenes, donde la clasificación resulta binaria (el objeto se encuentra presente en la imagen o no).
 Un problema se considera de regresión cuando se puede clasificar a las instancias del problema de acuerdo a valores de un dominio continuo, por ejemplo, al intentar predecir el valor de un inmueble dado un conjunto de características asociadas al mismo.
 
 \paragraph{}Las técnicas basadas en aprendizaje automático han tomando mayor relevancia en los últimos años debido al crecimiento de los volúmenes y la variedad de datos disponibles, a la disminución de los costos de infraestructura computacional, acompañado por un crecimiento del poder de cómputo y capacidad de almacenamiento.
 
-\paragraph{}En este proyecto se aplican dos algoritmos de aprendizaje automático conocidos como \textit{máquina de soporte vectorial} y \textit{redes neuronales} a un problema de clasificación.
+\paragraph{}En este proyecto se aplican dos de los algoritmos de aprendizaje automático mencionados anteriormente a un problema de clasificación: redes neuronales y máquina de soporte vectorial.
 
 \section{Clasificadores utilizados}
 
-\paragraph{}A continuación se presentan conceptos teóricos fundamentales asociados a los clasificadores utilizados en este trabajo.
+\paragraph{}A continuación se presentan los conceptos teóricos fundamentales asociados a los clasificadores utilizados en este trabajo.
 
 \input{capitulos/marco_teorico/ann}
 
