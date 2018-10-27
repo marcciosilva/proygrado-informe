@@ -39,7 +39,8 @@ En este trabajo, donde se utilizan redes multicapa, se utiliza el algoritmo \tex
 Gradiente descendente es una técnica que busca encontrar un mínimo de una función, ya sea local o no. 
 Para encontrar un mínimo local de una función usando gradiente descendente, se calcula el gradiente de la misma en un punto de partida y se lo hace variar en dirección negativa a dicho gradiente.
 De esta manera, se llegará a un mínimo local eventualmente.
-En el contexto de las redes neuronales, la búsqueda por gradiente descendente encuentra un vector de pesos que minimiza el error con respecto al hiperplano generado por los vectores de pesos asociados al conjunto de entrenamiento, comenzando por un vector de pesos inicial arbitrario, modificándolo en pequeños pasos, realizando cada modificación de tal manera que se produzca una disminución en el error con respecto al hiperplano de pesos asociados a la solución.
+En el contexto de las redes neuronales, la búsqueda por gradiente descendente encuentra un vector de pesos que minimiza el error con respecto al hiperplano generado por los vectores de pesos asociados al conjunto de entrenamiento.
+La búsqueda comienza utilizando un vector de pesos inicial arbitrario, modificándolo en pequeños pasos, realizando cada modificación de tal manera que se produzca una disminución en el error con respecto al hiperplano de pesos asociados a la solución.
 Este proceso continúa hasta que se llega a un error global mínimo.
 Gradiente descendente es una estrategia de búsqueda en un espacio grande o infinito de hipótesis que se puede aplicar siempre que dicho espacio contenga hipótesis que puedan ser determinadas de forma paramétrica, como son los pesos en las unidades.
 Así también, se requiere que el error pueda ser diferenciado con respecto a estos parámetros.
@@ -49,7 +50,7 @@ Esta estrategia tiene algunas dificultades fundamentales; una de ellas es que la
 El error es calculado en la salida de la red multicapa y es distribuido \textit{hacia atrás}, hacia las capas internas de la red, calculando para cada unidad perteneciente a una capa intermedia su error y actualizando sus pesos.
 El \textit{loop} de actualización de pesos en Backpropagation puede iterar miles de veces en una aplicación típica de redes neuronales, por lo que existen una variedad de criterios de terminación, como detener el loop luego de una cantidad fija de iteraciones, o detener el loop luego de que el error pasa por debajo de cierto umbral definido, o por criterios definidos sobre un conjunto dado de prueba. 
 Los criterios de terminación son importantes y su elección es delicada dado que, de terminar antes de lo necesario con las iteraciones, la red neuronal puede devolver salidas con un error elevado.
-Además, si se realizan muchas iteraciones se puede generar un sobreajuste de la red neuronal al conjunto de entrenamiento, produciendo resultados de bajo error para el conjunto de entrenamiento, pero con más altos niveles de error para conjuntos de validación con datos no vistos durante el entrenamiento.
+Por otra parte, si se realizan muchas iteraciones se puede generar un sobreajuste de la red neuronal al conjunto de entrenamiento, produciendo resultados de bajo error para el conjunto de entrenamiento, pero con más altos niveles de error para conjuntos de validación con datos no vistos durante el entrenamiento.
 Backpropagation no asegura la convergencia a un mínimo global debido al uso gradiente descendente en espacios de hipótesis de alta dimensionalidad (pudiendo haber tantas dimensiones como pesos).
 La alta dimensionalidad incrementa la probabilidad de que los movimientos en la superficie de error no permitan alcanzar un mínimo global, pudiendo alcanzar mínimos para una o más dimensiones, que no sean necesariamente mínimos para las otras dimensiones.
 A pesar de la falta de garantías con respecto a la convergencia del algoritmo a un mínimo global, Backpropagation es un método de aproximación de funciones altamente efectivo.
@@ -58,15 +59,15 @@ Por ejemplo, dada una instancia de entrenamiento con $N$ atributos, la utilizaci
 
 \paragraph{}En este trabajo se construyen varios tipos de redes que varían en las funciones de activación utilizadas por las unidades.
 A continuación se presentan las funciones de activación que se usaron durante este trabajo. 
-La función \textit{tanh()}, expresada de la siguiente manera: $f(x) = tanh(x) = \frac{2}{1 + e^{-2x}} - 1 $, es una función continua no lineal.
+La función \textit{tanh}, expresada de la siguiente manera: $f(x) = tanh(x) = \frac{2}{1 + e^{-2x}} - 1 $, es una función continua no lineal.
 Al componerla consigo misma se obtienen funciones no lineales, lo que permite combinar a unidades con esta función de activación sin perder la no linealidad. 
 tanh es una función suave en su curva, mostrando que pequeñas variaciones en valores del dominio cercanos a 0 generan cambios grandes en los valores correspondientes del codominio.
 Esto implica que se le da una gran ponderación a los valores de los extremos del codominio, algo análogo a una tasa de aprendizaje. 
 
-La función \textit{relu()}, expresada de la siguiente manera: $f(x) = relu(x) = max(0, x)$ es no lineal y las composiciones de ella consigo misma son no lineales, pero por su forma, puede generar que algunas neuronas den como resultado cero, constituyéndose una eventual pérdida de información.
+La función \textit{relu}, expresada de la siguiente manera: $f(x) = relu(x) = max(0, x)$ es no lineal y las composiciones de ella consigo misma son no lineales, pero por su forma, puede ocasionar que algunas neuronas den como resultado cero, constituyéndose una eventual pérdida de información.
 Este problema se llama \textit{dying relu problem}.
-Computar relu es menos costoso que computar tanh porque implica operaciones matemáticas más simples.
-La función \textit{identity}, también llamada de activación lineal, expresada de la siguiente manera: $f(x) = identity(x) = x$, siempre retorna el mismo valor que recibe en su argumento, lo que implica que equivale a una regresión lineal utilizando los pesos de la unidad.
+Sin embargo, computar relu es menos costoso que computar tanh porque implica operaciones matemáticas más simples.
+Por último, la función \textit{identity}, también llamada de activación lineal, expresada de la siguiente manera: $f(x) = identity(x) = x$, siempre retorna el mismo valor que recibe en su argumento, lo que implica que equivale a una regresión lineal utilizando los pesos de la unidad.
 
 % Ventajas y desventajas
 \paragraph{}Entre las ventajas de utilizar redes neuronales se encuentra el hecho de que se adecuan correctamente a problemas en los cuales los datos de entrenamiento contienen ruido y a contextos en los cuales tiempos largos de entrenamiento son aceptables.

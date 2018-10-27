@@ -1,12 +1,12 @@
 \chapter{Conclusiones y trabajo a futuro} \label{section-conclusiones}
 \markright{Conclusiones}
 
-\paragraph{}En este capítulo se presentan las conclusiones del trabajo realizado en este proyecto de grado y las principales líneas de trabajo a futuro.
+\paragraph{}En este capítulo se presentan las conclusiones del trabajo realizado en este Proyecto de Grado y las principales líneas de trabajo a futuro.
 
 \section{Conclusiones}
 
-\paragraph{}En este proyecto se presentó un estudio comparativo entre dos tipos de clasificadores de aprendizaje automático, SVM y redes neuronales, para el problema de \textit{HCSP} en el marco del paradigma de Savant Virtual.
-Se entrenaron diferentes configuraciones de redes neuronales y se compararon las soluciones obtenidas por cada uno de los clasificadores en términos de su \textit{makespan}, precisión y decisiones de selección de máquinas frente a errores.
+\paragraph{}En este proyecto se presentó un estudio comparativo entre dos tipos de clasificadores de aprendizaje automático, SVM y redes neuronales, en el contexto de aprender a resolver el problema \textit{HCSP}, bajo el paradigma de Savant Virtual.
+Se entrenaron diferentes configuraciones de redes neuronales y se compararon las soluciones obtenidas por cada uno de los clasificadores en términos de su \textit{makespan}, precisión y decisiones de selección de máquinas frente a asignaciones erróneas.
 Las redes neuronales fueron entrenadas utilizando distintas funciones de activación, así como también variando la cantidad de capas ocultas, manteniendo los demás parámetros de configuración constantes.
 De esta manera se generaron 9 redes neuronales de 2, 3 y 4 capas ocultas para las funciones de activación \textit{tanh}, \textit{relu} e \textit{identity} respectivamente.
 Fueron utilizadas para el entrenamiento 100 instancias del problema de 512 tareas y 16 máquinas, lo que se traduce en 512000 instancias de entrenamiento.
@@ -18,7 +18,6 @@ Para cada dimensión del problema se utilizaron 10 instancias del problema como 
 \paragraph{}Los resultados experimentales muestran que las redes neuronales de 2 capas ocultas generaron soluciones con un menor \textit{makespan} que aquellas con 3 y 4 capas ocultas; esto es una característica común a todas las redes neuronales utilizadas sin importar su función de activación.
 Además, el makespan tiende a ser menos variable para estas redes neuronales.
 Todo esto es importante dado que el \textit{makespan} se entiende como la métrica fundamental del éxito de una solución generada para el problema.
-% TODO explain -> utilizando menor tiempo de entrenamiento
 
 \paragraph{}En comparación con SVM, las redes neuronales de dos capas ocultas con funciones de activación \textit{tanh} e \textit{identity} muestran mejoras en \textit{makespan} para dimensiones grandes.
 Para dimensiones de a partir de 400 tareas y 16 máquinas se comienzan a observar mejoras en el \textit{makespan} para los resultados obtenidos con ambas redes neuronales.
@@ -28,11 +27,11 @@ Para las redes neuronales de dos capas ocultas entrenadas con la función de act
 
 \section{Trabajo a futuro}
 
-\paragraph{}A continuación se detallan las principales lineas de trabajo a futuro que surgen del trabajo realizado para el proyecto de grado.
+\paragraph{}A continuación se detallan las principales líneas de trabajo a futuro que surgen a raíz del trabajo realizado para este Proyecto de Grado.
 
 \paragraph{}Las instancias del problema \textit{HCSP} utilizadas para el entrenamiento y prueba de los clasificadores tienen como característica una baja heterogeneidad de tareas y de máquinas, lo cual hace difícil la aplicación de dichos clasificadores a la resolución de instancias reales del problema, donde se presume que lo corriente es tener tareas heterogéneas ejecutando en máquinas de características homogéneas o heterogéneas.
 Dentro de las líneas de trabajo a futuro se incluye el entrenamiento y prueba de clasificadores utilizando instancias del problema de mayor heterogeneidad en tareas y máquinas, siendo de interés analizar el comportamiento de aquellas configuraciones de redes neuronales que durante este trabajo mostraron resultados más prometedores.
-También es de interés probar distintas configuraciones parámetros de las redes neuronales, ya que durante este trabajo, se analizaron redes neuronales entrenadas con diferentes arquitecturas y funciones de activación, dejando el resto de los parámetros de configuración con sus valores predeterminados. 
+También es de interés probar distintas configuraciones de hiperparámetros de las redes neuronales, ya que durante este trabajo, se analizaron redes neuronales entrenadas con diferentes arquitecturas y funciones de activación, dejando el resto de los parámetros de configuración con sus valores predeterminados. 
 
 \paragraph{}Por otro lado, se considera necesario extender este estudio comparativo aplicando búsquedas locales tanto a las soluciones generadas con redes neuronales como a aquellas generadas por SVM, para evaluar el efecto que esto pudiera tener en la calidad de las mismas, ya sea en el marco de una implementación de MapReduce o no.
 

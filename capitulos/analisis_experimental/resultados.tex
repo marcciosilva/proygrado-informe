@@ -1,24 +1,23 @@
 \chapter{Análisis Experimental} \label{capitulo:analisis-experimental}
 \markright{Análisis Experimental}
 
-En este capitulo se presentan las decisiones tomadas en torno a las configuraciones de los clasificadores y los resultados obtenidos durante los experimentos y el análisis. 
+En este capitulo se presentan las decisiones tomadas en torno a las configuraciones de los clasificadores y los resultados obtenidos durante los experimentos y su análisis. 
 
 \section{Decisiones de configuración} \label{capitulo:configuracion}
 
 \paragraph{} Durante el análisis experimental fueron realizadas comparaciones entre las clasificaciones obtenidas por redes neuronales y SVM.
 En particular, fue de interés estudiar el comportamiento de las redes neuronales y SVM en términos del tamaño del problema.
 
-\paragraph{} Inspirado en Dorronsoro et al.
-(2013), se optó por trabajar con clasificadores entrenados con una determinada dimensión del problema (en particular $512$ tareas sobre $16$ máquinas o $512\times 16$) a la hora de clasificar instancias del problema de menor, igual y mayor cantidad de tareas.
+\paragraph{} Tomando el trabajo de \citet{savant-original} como inspiración, se optó por trabajar con clasificadores entrenados con una determinada dimensión del problema (en particular $512$ tareas sobre $16$ máquinas o $512\times 16$) a la hora de clasificar instancias del problema de menor, igual y mayor cantidad de tareas.
 Para hacer esto posible, se generaron instancias del problema de dimensión $512\times 16$, utilizadas para el entrenamiento de los clasificadores.
 Así también, para cada dimensión del problema desde $17\times 16$ hasta $1024\times 16$, se generaron conjuntos de $10$ instancias del problema, las cuales fueron utilizadas para calcular y comparar la precisión en la clasificación para redes neuronales y SVM.
 
 \paragraph{} Las redes neuronales fueron entrenadas con diferentes cantidades de capas ocultas, habiéndose generado con $2$, $3$ y $4$ capas ocultas, siendo 4 el máximo de capas ocultas empleado debido a limitaciones de recursos y tiempos de entrenamiento altos.
 
-\paragraph{} Como fue mencionado en el capítulo \textit{Implementación}, para obtener una primera selección de parámetros de configuración para el entrenamiento de las redes neuronales se utilizó \textit{model\_selection.GridSearchCV()} de \textit{scikit-learn}.
+\paragraph{} Como fue mencionado en el capítulo \textit{Implementación}, para obtener una primera selección de parámetros de configuración para el entrenamiento de las redes neuronales se utilizó la clase \textit{model\_selection.GridSearchCV} de \textit{scikit-learn}.
 Este método realiza una búsqueda, mediante validación cruzada, de los mejores parámetros para el entrenamiento de un clasificador.
 Para eso es necesario definir conjuntos de posibles valores a ser utilizados en los parámetros de los clasificadores.
-Entre los valores de los parámetros que se seleccionaron para utilizar el método \textit{GridSearchCV()} con las redes neuronales, se encuentran: \textit{lbfgs}, \textit{sgd}, \textit{adam} para el parámetro \textit{solver}; \textit{1e-2} y \textit{1e-4} para el coeficiente de aprendizaje llamado \textit{alpha} y \textit{relu}, \textit{tanh} e \textit{identity} como funciones de activación para el parámetro \textit{activation}.
+Entre los valores de los parámetros que se seleccionaron para utilizar el método \textit{GridSearchCV} con las redes neuronales, se encuentran: \textit{lbfgs}, \textit{sgd}, \textit{adam} para el parámetro \textit{solver}; \textit{1e-2} y \textit{1e-4} para el coeficiente de aprendizaje llamado \textit{alpha} y \textit{relu}, \textit{tanh} e \textit{identity} como funciones de activación para el parámetro \textit{activation}.
 Los resultados del método \textit{GridSearch()} para los parámetros mencionados se muestran en el Cuadro \ref{table:parametros}.
 Con respecto al parámetro \textit{activation} se observó que el valor seleccionado por el método \textit{GridSearch()} fue \textit{relu}; esto fue de particular interés debido a que dicha función de activación cambia de forma abrupta en su pendiente y estudios tempranos demostraron resultados poco prometedores que, al variar la función de activación, mejoraban notoriamente.
 Esto llevó a variar las funciones de activación para probar además el comportamiento de las redes neuronales con funciones de activación con pendientes que no tuvieran cambios abruptos.
@@ -52,7 +51,7 @@ Así mismo, en esta comparación también fueron analizados los resultados SVM.
 
 \paragraph{} Cada clasificador fue entrenado con 100 instancias del problema de dimensión $512\times16$, lo que se traduce en 512000 instancias de entrenamiento para los clasificadores. 
 
-\paragraph{} Para cada dimensión del rango estudiado, la clasificación fue realizada sobre 10 instancias del problema y los resultados mostrados son un promedio de estas.
+\paragraph{} Para cada dimensión del rango estudiado, se utilizaron 10 instancias del problema para validar el rendimiento de dichos clasificadores, y los resultados mostrados son un promedio de estas.
 
 \paragraph{} Fueron identificados aquellos clasificadores que obtuvieron mejores resultados en \textit{makespan}.
 Las figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234} muestran las diferencias de \textit{makespan} porcentuales con respecto al \textit{makespan} obtenido por el algoritmo Min-Min, para la clasificación de instancias del problema en un rango de dimensiones que va desde $17\times16$ a $1024\times16$.
@@ -82,7 +81,7 @@ En este caso los resultados para las redes neuronales son más próximos a los v
 Ya desde tareas de dimensión $ 200 \times 16$ se comienzan a observar mejoras en el \textit{makespan}, siendo aún más evidentes para instancias del problema de dimensión mayor.
 Nuevamente se observa que los resultados más próximos al \textit{makespan} esperado están dados por la red neuronal con dos capas ocultas. 
 
-\paragraph{}En la Figura \ref{fig:tanh234} se observan los resultados para las redres neuronales utilizando la función de activación \textit{tanh}.
+\paragraph{}En la Figura \ref{fig:tanh234} se observan los resultados para las redes neuronales utilizando la función de activación \textit{tanh}.
 En este caso, la red neuronal con dos capas ocultas mejora los resultados obtenidos a partir de instancias del problema de dimensión $ 400 \times 16$ en adelante. 
 
 \paragraph{}En los casos presentados en las figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234}, los mejores resultados de las redes neuronales se encuentran para aquellas de dos capas ocultas.
@@ -225,4 +224,4 @@ Esto se traduce en mejores resultados de \textit{makespan} invirtiendo un menor 
 \paragraph{} Para redes neuronales entrenadas utilizando \textit{tanh} e \textit{identity} como funciones de activación, el \textit{makespan} de los resultados mejora levemente con respecto al \textit{makespan} de los resultados obtenidos con SVM para dimensiones grandes del problema.
 Se observa que hay una relación directa entre la precisión y la mejora porcentual de \textit{makespan}, así como también entre el porcentaje de selección de mejores máquinas frente a un error y la mejora porcentual de \textit{makespan}. 
 
-\paragraph{} Los resultados obtenidos con la red neuronal con función de activación \textit{relu} no mejoran los resultados obtenidos con SVM en términos de \textit{makespan}, obteniendo precisiones en clasificación similares, teniendo un porcentaje menor de selección de mejores máquinas frente a un error, haciendo que \textit{relu} sea una función de activación poco adecuada para trabajar con el problema abordado, el \textit{Heterogeneous Computing Scheduling Problem}. 
+\paragraph{} Los resultados obtenidos con la red neuronal con función de activación \textit{relu} no mejoran los resultados obtenidos con SVM en términos de \textit{makespan}, obteniendo precisiones en clasificación similares, teniendo un porcentaje menor de selección de mejores máquinas frente a un error. Esto hace que \textit{relu} sea una función de activación poco adecuada si el objetivo perseguido es aprender a resolver el problema HCSP.
