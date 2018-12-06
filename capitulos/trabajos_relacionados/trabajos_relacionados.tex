@@ -34,7 +34,7 @@ En algunas instancias de prueba SV fue capaz de encontrar mejores soluciones que
 
 El trabajo de \citet{savant-original} presenta oportunidades de trabajo a futuro desde diversos puntos de vista; el \textit{reducer} puede llevar a cabo una búsqueda paralela de mejores soluciones, se puede estudiar el uso de otro tipo de clasificadores y se pueden estudiar aplicaciones para verificar la adaptabilidad de SV a otros problemas y comparar su desempeño frente al obtenido para el problema HCSP. 
 
-Este trabajo representó el punto de partida para la investigación en torno a SV y proporciona el marco de trabajo que se sigue en el Proyecto de Grado, dado que involucra el mismo modelo conceptual, tipos de pruebas y modelado de problemas.
+Este trabajo representó el punto de partida para la investigación en torno a SV y proporciona el marco de trabajo que se sigue en el proyecto de grado, dado que involucra el mismo modelo conceptual, tipos de pruebas y modelado de problemas.
 
 % SECOND
 \paragraph{}En \citet{savant-bag} se estudió la aplicación de SV para la generación automática de programas para resolver el problema de la mochila.
@@ -51,17 +51,17 @@ Con el fin de determinar una selección de atributos adecuada (dado que se conta
 Dado que la precisión media para todas las configuraciones fue elevada y hubieron diferencias pequeñas entre las configuraciones con respecto a este valor, se optó por emplear al tipo de selección más sencillo y directo, que resultó ser el peso del objeto, su beneficio y la capacidad de la mochila.
 Experimentalmente se determinó que al utilizar más del 15\% de los datos para entrenar al clasificador las mejoras en precisión resultaron marginales, por lo que se optó por utilizar únicamente ese porcentaje de los datos, reduciendo de esta manera los tiempos de entrenamiento de la SVM.
 Como resultado se obtuvo un error medio del 3,2\% con respecto al resultado óptimo para cada instancia del problema, obtenido mediante el uso de un algoritmo exacto de referencia.
-El valor del trabajo de \citet{savant-bag} para este Proyecto de Grado reside en el hecho de que amplía la información disponible en relación a SV.
+El valor del trabajo de \citet{savant-bag} para este proyecto de grado reside en el hecho de que amplía la información disponible en relación a SV.
 
 % ############### RESEÑA ###############
 \section{Técnicas de clasificación} \label{section-trabajos-tecnicas-clasificacion}
 
 \paragraph{}El trabajo de \citet{ml-survey} presenta una reseña sobre métodos de aprendizaje automático, principalmente de carácter expositivo, que ofrece guías para cómo seleccionar apropiadamente clasificadores de aprendizaje automático para casos de uso comúnmente encontrados en la práctica.
-Se presenta a los árboles de decisión, que ofrecen buenos resultados para problemas donde los atributos toman valores discretos o categóricos; por lo tanto no sería acertado aplicarlos para un problema de optimización combinatoria con variables numéricas, como es el caso del problema estudiado en este Proyecto de Grado.
+Se presenta a los árboles de decisión, que ofrecen buenos resultados para problemas donde los atributos toman valores discretos o categóricos; por lo tanto no sería acertado aplicarlos para un problema de optimización combinatoria con variables numéricas, como es el caso del problema estudiado en este proyecto de grado.
 Se destaca el hecho de que los algoritmos estadísticos en general resultan menos precisos que aquellos más sofisticados como las redes neuronales artificiales, aunque tienen tiempos de aprendizaje menores.
 Los algoritmos como las redes neuronales artificiales o SVM requieren de un mayor ajuste de parámetros, no son modelos interpretables por humanos y requieren de un gran conjunto de datos de entrenamiento para ser precisos al clasificar.
 Por otra parte, se presentan algoritmos lógicos como el de \textit{k-nearest neighbors} o \textit{KNN}, que tienen parámetros sencillos de ajustar y son transparentes en términos de su funcionamiento, pero que involucran una carga de memoria poco conveniente a la hora de estudiar problemas de grandes dimensiones.
-El valor del trabajo de \citet{ml-survey} para este Proyecto de Grado reside en la guía comparativa de selección de métodos de aprendizaje automático que ofrece, que presenta los algoritmos más comunes para cada variante de aprendizaje automático, como \textit{ID3} para árboles de decisión y \textit{Backpropagation} para redes neuronales.
+El valor del trabajo de \citet{ml-survey} para este proyecto de grado reside en la guía comparativa de selección de métodos de aprendizaje automático que ofrece, que presenta los algoritmos más comunes para cada variante de aprendizaje automático, como \textit{ID3} para árboles de decisión y \textit{Backpropagation} para redes neuronales.
 
 % ############### RESEÑA ###############
 
@@ -88,7 +88,7 @@ Cada instancia de entrenamiento constaba de entradas asociadas a señales eléct
 Para cada conjunto de datos se destinó el 50\% al entrenamiento y el 50\% a la validación y se considera como medida de rendimiento la precisión de cada clasificador sobre el conjunto de validación.
 Se encontró que, en general, la precisión de los clasificadores que usaban selección de atributos (reduciendo la cantidad de atributos a la mitad) se mantenía muy próxima a la de los clasificadores que utilizaban todos los atributos.
 Por ejemplo, para un conjunto de datos que determinaba si un paciente tenía cáncer de acuerdo a 10 atributos, un clasificador (en particular SVM) obtuvo una precisión mayor al 96\%, mientras que el mismo clasificador entrenado con 5 atributos mantuvo una precisión del 95\%.
-Este trabajo resultó de gran importancia para determinar cómo llevar a cabo la selección de atributos para la representación del problema estudiado en este Proyecto de Grado.
+Este trabajo resultó de gran importancia para determinar cómo llevar a cabo la selección de atributos para la representación del problema estudiado en este proyecto de grado.
 
 % SECOND
 \paragraph{}El trabajo de \citet{survey-feature-selection-extraction} analiza un conjunto de técnicas para la selección y extracción de atributos, con el propósito de determinar qué tan efectivas son estas técnicas a la hora de lograr un alto desempeño en clasificación.
@@ -102,7 +102,7 @@ PCA es un método no paramétrico simple que consiste en una transformación lin
 Este método tiene las siguientes limitaciones: asume que la relación entre las variables es lineal, su interpretación de los datos resulta razonable únicamente si se asume que todas las variables están escaladas numéricamente y carece de un modelo probabilístico.
 Para sobrellevar las dos primeras limitaciones se propuso el método PCA no lineal, donde las variables son observadas como categóricas.
 Para afrontar la última limitación se propuso el método PPCA (\textit{Probabilistic Principal Component Analysis}), en el que PCA es uno de los parámetros de un modelo probabilístico. 
-El trabajo de \citet{survey-feature-selection-extraction} fue un gran aporte a la hora de determinar cómo llevar a cabo la selección y/o extracción de atributos para la representación del problema estudiado en este Proyecto de Grado.
+El trabajo de \citet{survey-feature-selection-extraction} fue un gran aporte a la hora de determinar cómo llevar a cabo la selección y/o extracción de atributos para la representación del problema estudiado en este proyecto de grado.
 
 % ############### RESEÑA ###############
 
@@ -154,7 +154,7 @@ Dean et al.
 \cite{mapreduce} & 2008 & Utilización de MapReduce para procesamiento de grandes volúmenes de datos en clusters \\
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
-\caption{Trabajos relacionados al Proyecto de Grado}
+\caption{Trabajos relacionados al proyecto de grado}
 \label{table:trabajos-relacionados}
 \end{table}
 % ############### FIN TABLA ###############
