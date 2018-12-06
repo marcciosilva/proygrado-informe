@@ -27,9 +27,9 @@ Para expresar decisiones no lineales es necesario emplear neuronas cuyas salidas
 Una posibilidad es la utilización de unidades sigmoide, cuya estructura es similar a la del perceptrón, variando en la función de activación, que es la función \textit{sigmoide}, una función no lineal diferenciable.
 La personalización de las neuronas artificiales, por lo tanto, genera la posibilidad de representar una gran variedad de funciones.
 
-\paragraph{}Por lo tanto, el objetivo del aprendizaje automático en términos de redes neuronales puede dividirse en dos.
+\paragraph{}Por lo tanto, la forma de trabajar utilizando redes neuronales puede dividirse en dos fases.
 Primero, se debe encontrar una configuración arquitectónica de perceptrones o neuronas capaz de expresar la función que se está intentando aprender (que puede no ser conocida a priori y, por lo tanto, puede ser necesario evaluar diversas disposiciones en términos de cantidad de capas y cantidad de neuronas).
-Finalmente, se debe encontrar un vector de pesos $(w_0,w_1,\dots,w_n)$ apropiado para cada perceptrón mediante el entrenamiento. 
+Luego, se debe encontrar un vector de pesos $(w_0,w_1,\dots,w_n)$ apropiado para cada perceptrón mediante el entrenamiento. 
 En el contexto de un problema de clasificación, entrenar una red neuronal consiste en administrarle ejemplos ya clasificados del problema de interés.
 Para cada ejemplo administrado, la red primero producirá una clasificación para el problema dado y la comparará con la salida esperada, tras lo cual ajustará los pesos de cada una de sus unidades para reducir la eventual diferencia entre estos dos valores, utilizando un algoritmo definido previamente.
 En este trabajo, donde se utilizan redes multicapa, se utiliza el algoritmo \textit{Backpropagation} para \textit{aprender} los vectores de pesos de cada una de las unidades interconectadas que las componen. 
@@ -44,11 +44,11 @@ La búsqueda comienza utilizando un vector de pesos inicial arbitrario, modific�
 Este proceso continúa hasta que se llega a un error global mínimo.
 Gradiente descendente es una estrategia de búsqueda en un espacio grande o infinito de hipótesis que se puede aplicar siempre que dicho espacio contenga hipótesis que puedan ser determinadas de forma paramétrica, como son los pesos en las unidades.
 Así también, se requiere que el error pueda ser diferenciado con respecto a estos parámetros.
-Esta estrategia tiene algunas dificultades fundamentales; una de ellas es que la velocidad de convergencia a un mínimo es lenta, pudiendo requerir varios miles de pasos para lograrla y además, si existen varios mínimos locales en la superficie de error, no se garantiza que la búsqueda converja a un mínimo global.
+Esta estrategia tiene algunas dificultades fundamentales; una de ellas es que la velocidad de convergencia a un mínimo es lenta, pudiendo requerir varios miles de pasos para lograrla y además, si existen varios mínimos locales en la superficie de error, no garantiza que la búsqueda converja a un mínimo global.
 
 \paragraph{}El algoritmo Backpropagation es un método utilizado en redes multicapa para calcular el gradiente que se utiliza para el cálculo de los pesos de las neuronas, empleando gradiente descendente.
 El error es calculado en la salida de la red multicapa y es distribuido \textit{hacia atrás}, hacia las capas internas de la red, calculando para cada unidad perteneciente a una capa intermedia su error y actualizando sus pesos.
-El \textit{loop} de actualización de pesos en Backpropagation puede iterar miles de veces en una aplicación típica de redes neuronales, por lo que existen una variedad de criterios de terminación, como detener el loop luego de una cantidad fija de iteraciones, o detener el loop luego de que el error pasa por debajo de cierto umbral definido, o por criterios definidos sobre un conjunto dado de prueba. 
+El bucle de actualización de pesos en Backpropagation puede iterar miles de veces en una aplicación típica de redes neuronales, por lo que existen una variedad de criterios de terminación, como detener el bucle luego de una cantidad fija de iteraciones, o detener el bucle luego de que el error alcanza cierto umbral definido, o por criterios definidos sobre un conjunto dado de prueba. 
 Los criterios de terminación son importantes y su elección es delicada dado que, de terminar antes de lo necesario con las iteraciones, la red neuronal puede devolver salidas con un error elevado.
 Por otra parte, si se realizan muchas iteraciones se puede generar un sobreajuste de la red neuronal al conjunto de entrenamiento, produciendo resultados de bajo error para el conjunto de entrenamiento, pero con más altos niveles de error para conjuntos de validación con datos no vistos durante el entrenamiento.
 Backpropagation no asegura la convergencia a un mínimo global debido al uso gradiente descendente en espacios de hipótesis de alta dimensionalidad (pudiendo haber tantas dimensiones como pesos).
