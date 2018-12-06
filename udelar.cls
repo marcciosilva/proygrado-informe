@@ -690,8 +690,7 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
 \newcommand\frontcover@maintext{
   \sloppy\nohyphens{\local@doctype\ de \@degreename\
   presentada al Programa de Grado \@tipoescritura~\local@graduatename, \local@maininstitute\ de la Universidad de la Rep{\'u}blica, como parte de los requisitos
-  necesarios para la obtenci{\'o}n del t{\'i}tulo de
-  \local@degname\ en \local@graduatename.}
+  necesarios para la obtenci{\'o}n del t{\'i}tulo de Ingeniero en Computación}
 }
 
 \newcommand\frontpage@bottomtext{%
