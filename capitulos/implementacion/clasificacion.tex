@@ -1,3 +1,5 @@
+\newpage % orphaned line.
+
 \section{Clasificación} \label{chapter-implementacion:clasificacion}
 
 \paragraph{} En lo que respecta a la clasificación, se implementó un componente encargado de clasificar un conjunto de ejemplos de validación dado uno o más clasificadores ya entrenados.
@@ -12,6 +14,8 @@ Finalmente, se calcula el porcentaje de ocasiones en las que el clasificador, al
 Esta métrica se calcula con el fin de evaluar si un clasificador se alejó de lo esperado en términos de precisión y makespan por haber aprendido a comportarse de manera ávida y por lo tanto aprendiendo a maximizar el beneficio local para cada tarea.
 
 \paragraph{} La implementación de el componente de clasificación consta fundamentalmente de scripts, y la Figura \ref{fig:diagrama-clasificacion} presenta un diagrama de secuencia que explicita su funcionamiento.
+
+\newpage % orphaned line.
 
 \paragraph{} En la implementación, inicialmente se invoca el script encargado de realizar todo este análisis sobre un conjunto de ejemplos de validación.
 Estos ejemplos de validación deben estar presentes en un directorio especificado mediante opciones al invocar el script.

@@ -744,10 +744,10 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
 \vspace*{20mm}
 \ifnum\value{keywords}>1
 \noindent
-Palabras claves:\\ 
+% Palabras claves:\\ 
 \else
 \noindent
-Palabra clave:\\
+% Palabra clave:\\
 \fi
 \count1=0
 \count2=1

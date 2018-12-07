@@ -34,7 +34,8 @@ En el contexto de un problema de clasificación, entrenar una red neuronal consi
 Para cada ejemplo administrado, la red primero producirá una clasificación para el problema dado y la comparará con la salida esperada, tras lo cual ajustará los pesos de cada una de sus unidades para reducir la eventual diferencia entre estos dos valores, utilizando un algoritmo definido previamente.
 En este trabajo, donde se utilizan redes multicapa, se utiliza el algoritmo \textit{Backpropagation} para \textit{aprender} los vectores de pesos de cada una de las unidades interconectadas que las componen. 
 
-% TODO hacer notar a renzo inconsistencia en correcciones
+\newpage % orphaned line.
+
 \paragraph{}Para describir el funcionamiento del algoritmo Backpropagation, y cómo este ajusta de manera iterativa los pesos de las unidades, es importante definir el concepto de \textit{gradiente descendente}.
 Gradiente descendente es una técnica que busca encontrar un mínimo de una función, ya sea local o no. 
 Para encontrar un mínimo local de una función usando gradiente descendente, se calcula el gradiente de la misma en un punto de partida y se lo hace variar en dirección negativa a dicho gradiente.
@@ -49,7 +50,10 @@ Esta estrategia tiene algunas dificultades fundamentales; una de ellas es que la
 \paragraph{}El algoritmo Backpropagation es un método utilizado en redes multicapa para calcular el gradiente que se utiliza para el cálculo de los pesos de las neuronas, empleando gradiente descendente.
 El error es calculado en la salida de la red multicapa y es distribuido \textit{hacia atrás}, hacia las capas internas de la red, calculando para cada unidad perteneciente a una capa intermedia su error y actualizando sus pesos.
 El bucle de actualización de pesos en Backpropagation puede iterar miles de veces en una aplicación típica de redes neuronales, por lo que existen una variedad de criterios de terminación, como detener el bucle luego de una cantidad fija de iteraciones, o detener el bucle luego de que el error alcanza cierto umbral definido, o por criterios definidos sobre un conjunto dado de prueba. 
-Los criterios de terminación son importantes y su elección es delicada dado que, de terminar antes de lo necesario con las iteraciones, la red neuronal puede devolver salidas con un error elevado.
+
+\newpage % orphaned line.
+
+\paragraph{} Los criterios de terminación son importantes y su elección es delicada dado que, de terminar antes de lo necesario con las iteraciones, la red neuronal puede devolver salidas con un error elevado.
 Por otra parte, si se realizan muchas iteraciones se puede generar un sobreajuste de la red neuronal al conjunto de entrenamiento, produciendo resultados de bajo error para el conjunto de entrenamiento, pero con más altos niveles de error para conjuntos de validación con datos no vistos durante el entrenamiento.
 Backpropagation no asegura la convergencia a un mínimo global debido al uso gradiente descendente en espacios de hipótesis de alta dimensionalidad (pudiendo haber tantas dimensiones como pesos).
 La alta dimensionalidad incrementa la probabilidad de que los movimientos en la superficie de error no permitan alcanzar un mínimo global, pudiendo alcanzar mínimos para una o más dimensiones, que no sean necesariamente mínimos para las otras dimensiones.
@@ -64,10 +68,13 @@ Al componerla consigo misma se obtienen funciones no lineales, lo que permite co
 tanh es una función suave en su curva, mostrando que pequeñas variaciones en valores del dominio cercanos a 0 generan cambios grandes en los valores correspondientes del codominio.
 Esto implica que se le da una gran ponderación a los valores de los extremos del codominio, algo análogo a una tasa de aprendizaje. 
 
-La función \textit{relu}, expresada de la siguiente manera: $f(x) = relu(x) = max(0, x)$ es no lineal y las composiciones de ella consigo misma son no lineales, pero por su forma, puede ocasionar que algunas neuronas den como resultado cero, constituyéndose una eventual pérdida de información.
+\newpage % orphaned line.
+
+\paragraph{} La función \textit{relu}, expresada de la siguiente manera: $f(x) = relu(x) = max(0, x)$ es no lineal y las composiciones de ella consigo misma son no lineales, pero por su forma, puede ocasionar que algunas neuronas den como resultado cero, constituyéndose una eventual pérdida de información.
 Este problema se llama \textit{dying relu problem}.
 Sin embargo, computar relu es menos costoso que computar tanh porque implica operaciones matemáticas más simples.
-Por último, la función \textit{identity}, también llamada de activación lineal, expresada de la siguiente manera: $f(x) = identity(x) = x$, siempre retorna el mismo valor que recibe en su argumento, lo que implica que equivale a una regresión lineal utilizando los pesos de la unidad.
+
+\paragraph{} Por último, la función \textit{identity}, también llamada de activación lineal, expresada de la siguiente manera: $f(x) = identity(x) = x$, siempre retorna el mismo valor que recibe en su argumento, lo que implica que equivale a una regresión lineal utilizando los pesos de la unidad.
 
 % Ventajas y desventajas
 \paragraph{}Entre las ventajas de utilizar redes neuronales se encuentra el hecho de que se adecuan correctamente a problemas en los cuales los datos de entrenamiento contienen ruido y a contextos en los cuales tiempos largos de entrenamiento son aceptables.

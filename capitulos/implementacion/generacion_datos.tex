@@ -24,14 +24,16 @@ Es decir que para una instancia del problema de dimensión $M \times N$ tendremo
 Finalmente, se agrupan estos ejemplos de entrenamiento y se persisten en formato CSV para su uso posterior.
 Este formato es utilizado por ser el estándar soportado más comúnmente por las bibliotecas de manejo de datos utilizadas.
 
+\newpage % orphaned line.
+
+\paragraph{} El componente de software encargado de la generación de instancias del problema, como el resto de los mencionados en este capítulo, fue desarrollado de manera de permitir su ejecución automatizada, a pesar de existir un usuario presente en el diagrama de secuencia.
+Dicho usuario puede bien ser un usuario final o un script encargado de invocar a este sistema.
+La posibilidad de automatización favorece la generación de ejemplos de entrenamiento a gran escala y de manera paralela mediante el uso de hilos.
+Además, se ofrece al usuario la posibilidad de determinar cuántas instancias del problema (con sus correspondientes soluciones) serán generadas, dónde se persisten, y las características de los tipos de instancias del problema a generar, como por ejemplo la dimensión de las mismas.
+
 \textsc{\begin{figure}[ht!]
 	\centering
     \includegraphics[width=.9\linewidth]{imagenes/implementacion/diagrama-datos.png}
 	\caption{Diagrama de secuencia de generación de ejemplos de entrenamiento.}
 	\label{fig:diagrama-datos}
 \end{figure}}
-
-\paragraph{} El componente de software encargado de la generación de instancias del problema, como el resto de los mencionados en este capítulo, fue desarrollado de manera de permitir su ejecución automatizada, a pesar de existir un usuario presente en el diagrama de secuencia.
-Dicho usuario puede bien ser un usuario final o un script encargado de invocar a este sistema.
-La posibilidad de automatización favorece la generación de ejemplos de entrenamiento a gran escala y de manera paralela mediante el uso de hilos.
-Además, se ofrece al usuario la posibilidad de determinar cuántas instancias del problema (con sus correspondientes soluciones) serán generadas, dónde se persisten, y las características de los tipos de instancias del problema a generar, como por ejemplo la dimensión de las mismas.

@@ -12,6 +12,8 @@ En particular, fue de interés estudiar el comportamiento de las redes neuronale
 Para hacer esto posible, se generaron instancias del problema de dimensión $512\times 16$, utilizadas para el entrenamiento de los clasificadores.
 Así también, como se presentó en la Sección \ref{chapter-implementacion:data}, para cada dimensión del problema desde $17\times 16$ hasta $1024\times 16$, se generaron conjuntos de $10$ instancias del problema, las cuales fueron utilizadas para calcular y comparar la precisión en la clasificación para redes neuronales y SVM.
 
+\newpage % orphaned line.
+
 \paragraph{} Las redes neuronales fueron entrenadas con diferentes cantidades de capas ocultas, habiéndose generado con $2$, $3$ y $4$ capas ocultas, siendo 4 el máximo número de capas ocultas empleado debido a limitaciones de recursos y tiempos de entrenamiento altos.
 
 \paragraph{} Como fue mencionado en el Capítulo \ref{chapter-implementation}, para obtener una primera selección de parámetros de configuración para el entrenamiento de las redes neuronales se utilizó la clase \textit{model\_selection.GridSearchCV} de \textit{scikit-learn}.
@@ -40,7 +42,7 @@ activation & relu\\
 \label{table:parametros}
 \end{table}
 
-Se evaluaron las redes neuronales resultantes de las combinaciones de las funciones de activación \textit{relu}, \textit{tanh} e \textit{identity} y las cantidades de capas ocultas, profundizando en las pruebas para aquellas combinaciones que mostraban resultados más prometedores.
+\paragraph{} Se evaluaron las redes neuronales resultantes de las combinaciones de las funciones de activación \textit{relu}, \textit{tanh} e \textit{identity} y las cantidades de capas ocultas, profundizando en las pruebas para aquellas combinaciones que mostraban resultados más prometedores.
 
 \section{Análisis combinado para redes neuronales de 2, 3 y 4 capas ocultas}
 
@@ -76,28 +78,32 @@ En este caso los resultados para las redes neuronales son más próximos a los v
 Ya desde tareas de dimensión $ 200 \times 16$ se comienzan a observar mejoras en el \textit{makespan}, siendo aún más evidentes para instancias del problema de dimensión mayor.
 Nuevamente se observa que los resultados más próximos al \textit{makespan} esperado están dados por la red neuronal con dos capas ocultas. 
 
+\newpage % orphaned line.
+
 \paragraph{}En la Figura \ref{fig:tanh234} se observan los resultados para las redes neuronales utilizando la función de activación \textit{tanh}.
 En este caso, la red neuronal con dos capas ocultas mejora los resultados obtenidos a partir de instancias del problema de dimensión $ 400 \times 16$ en adelante. 
 
-\paragraph{}En los casos presentados en las Figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234}, los mejores resultados de las redes neuronales se encuentran para aquellas de solo dos capas ocultas. Fue profundizado el estudio de las redes neuronales con solo dos capas ocultas, de cara a entender mejor la naturaleza de las soluciones generadas. 
+\paragraph{} En los casos presentados en las Figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234}, los mejores resultados de las redes neuronales se encuentran para aquellas de solo dos capas ocultas. Fue profundizado el estudio de las redes neuronales con solo dos capas ocultas, de cara a entender mejor la naturaleza de las soluciones generadas. 
 
-\begin{figure}[H]
+\textsc{\begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{imagenes/comparacion_anns_identity_2.png}
-  \caption{Comparación de  la diferencia porcentual  de los resultados de \textit{makespan} para redes neuronales con función de activación \textit{identity} y para SVM, con respecto al \textit{makespan} obtenido por el algoritmo Min-Min.
-Se comparan redes neuronales de 2, 3 y 4 capas.
-Así también se muestran los resultados obtenidos con el algoritmo de SVM.}
+  \caption{Comparación de  la diferencia porcentual  de los resultados de \textit{makespan} para redes neuronales con función de activación \textit{identity} y para SVM, con respecto al \textit{makespan} obtenido por el algoritmo Min-Min. Se comparan redes neuronales de 2, 3 y 4 capas. Así también se muestran los resultados obtenidos con el algoritmo de SVM.}
   \label{fig:identity234}
-\end{figure}
+\end{figure}}
 
-\begin{figure}[H]
+\newpage % orphaned line.
+
+\textsc{\begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{imagenes/comparacion_anns_tanh_2.png}
   \caption{Comparación de  la diferencia porcentual  de los resultados de \textit{makespan} para redes neuronales con función de activación \textit{tanh} y para SVM, con respecto al \textit{makespan} obtenido por el algoritmo Min-Min.
 Se comparan redes neuronales de 2, 3 y 4 capas.
 Así también se muestran los resultados obtenidos con el algoritmo de SVM.}
   \label{fig:tanh234}
-\end{figure}
+\end{figure}}
+
+\newpage % orphaned line.
 
 \section{Red neuronal con activación \textit{relu} de dos capas ocultas}
 
@@ -116,6 +122,8 @@ Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 1
   \label{fig:relu_makespan}
 \end{figure}
 
+\newpage % orphaned line.
+
 \paragraph{}La precisión de la red neuronal es levemente mayor que la precisión de la SVM.
 Esto, en comparación con la diferencia de \textit{makespan} de la Figura \ref{fig:relu_makespan}, es de interés dado que, si bien la precisión de la red neuronal es levemente mejor, la SVM genera mejores resultados en términos de \textit{makespan}.
 Este escenario también fue identificado para las demás redes neuronales en las cuales se profundizaron los estudios. 
@@ -132,12 +140,16 @@ Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 1
   \label{fig:relu_accuracy}
 \end{figure}
 
+\newpage % orphaned line.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{imagenes/relu/4_porcentaje_maquinas_mejores_ann_2_capas_ocultas_relu.png}
   \caption{Porcentaje de selección de máquinas mejores frente a una selección diferente a la esperada para la red neuronal con activación \textit{relu} de dos capas ocultas y para la SVM.}
   \label{fig:relu_maquinas_mejores}
 \end{figure}
+
+\newpage % orphaned line.
  
 \section{Red neuronal con activación \textit{identity} de dos capas ocultas}
 
@@ -154,6 +166,8 @@ Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 1
   \label{fig:identity_makespan}
 \end{figure}
 
+\newpage % orphaned line.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{imagenes/identity/3_accuracy_ann_2_capas_ocultas_identity.png}
@@ -165,6 +179,8 @@ Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 1
 \paragraph{}Al observar el porcentaje de mejores máquinas seleccionadas frente a un error en la Figura \ref{fig:identity_mejores}, se observa que la red neuronal con función de activación \textit{identity} selecciona máquinas más rápidas en proporciones similares a la SVM, a diferencia de los resultados presentados para la red neuronal con función de activación \textit{relu}, que tiende a elegir máquinas más lentas que la SVM frente a un error.
 Estos resultados llevan a pensar que el hecho de que la proporción de selección de mejores máquinas por parte de la red neuronal con función de activación \textit{identity} sea mayor que para el caso de \textit{relu}, conduce a una leve disminución del \textit{makespan}. 
 
+\newpage % orphaned line.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{imagenes/identity/4_porcentaje_maquinas_mejores_ann_2_capas_ocultas_identity.png}
@@ -172,12 +188,13 @@ Estos resultados llevan a pensar que el hecho de que la proporción de selecció
   \label{fig:identity_mejores}
 \end{figure}
 
+\newpage % orphaned line.
+
 \section{Red neuronal con activación \textit{tanh} de dos capas ocultas}
 
 La Figura \ref{fig:tanh_makespan} muestra las diferencias porcentuales de \textit{makespan} para la red neuronal con activación \textit{tanh} y para la SVM.
 En esta se observa una leve mejora en \textit{makespan} para la red neuronal con respecto al \textit{makespan} obtenido con SVM, para dimensiones grandes.
 Esta mejora va acompañada de una mejora en la precisión, sustancial en comparación con las precisiones de las otras funciones de activación estudiadas, como se observa en la Figura \ref{fig:tanh_accuracy}.
- 
 
 \begin{figure}[H]
   \centering
@@ -187,6 +204,8 @@ Así también se muestran los resultados obtenidos para la SVM.
 Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 16$ a $ 1024 \times 16$}
   \label{fig:tanh_makespan}
 \end{figure}
+
+\newpage % orphaned line.
 
 \begin{figure}[H]
   \centering
@@ -201,12 +220,16 @@ Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 1
 \paragraph{} Para dimensiones grandes se selecciona alrededor de un $15\%$ de mejores máquinas para la función de activación \textit{tanh}, siendo este porcentaje el más bajo obtenido para todas las funciones de activación estudiadas.
 Esto conduce a pensar que la precisión es fundamental para aproximarse al \textit{makespan} esperado y que las decisiones que se toman a la hora de seleccionar una máquina diferente a la esperada pierde importancia frente a una precisión elevada en clasificación, donde un error puede costar caro en términos de tiempos de ejecución o \textit{makespan}.
 
+\newpage % orphaned line.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\columnwidth]{imagenes/tanh/4_porcentaje_maquinas_mejores_ann_2_capas_ocultas_tanh.png}
   \caption{Porcentaje de selección de máquinas mejores frente a una selección diferente a la esperada para la red neuronal con activación \textit{tanh} de dos capas ocultas y para la SVM.}
   \label{fig:tanh_mejores}
 \end{figure}
+
+\newpage % orphaned line.
 
 \section{Observaciones generales}
 

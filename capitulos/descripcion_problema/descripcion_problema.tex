@@ -12,6 +12,8 @@ En la Sección \ref{section:descripcion-problema,subsection:introduccion} se int
 \paragraph{}En un contexto donde el poder de cómputo se ve incrementado constantemente y la comercialización de computadores de bajo costo es común, se vuelve también común el uso de ambientes computacionales distribuidos basados en componentes heterogéneos para la resolución de problemas complejos y con diversas aplicaciones.
 Esto incluye a aquellos problemas que por escala o limitaciones de recursos no eran resolubles en el pasado y a aquellos problemas surgidos por la utilización de dichos sistemas heterogéneos y distribuidos. 
 
+\newpage % orphaned line.
+
 \paragraph{}Uno de los problemas fundamentales que surgen al emplear computación heterogénea (o HC, del inglés \textit{Heterogeneous Computing}) es el de encontrar una manera de planificar un conjunto de tareas a ser ejecutadas tomando en cuenta las características y poder computacional de cada uno de los elementos que conforman al sistema.
 El objetivo de este problema de planificación, conocido como HCSP, es el de asignar tareas de manera óptima a recursos computacionales optimizando alguna métrica de eficiencia.
 Usualmente se tiende a utilizar estrategias que optimicen el \textit{makespan}, una métrica que contempla el tiempo total desde el inicio de la ejecución de la primer tarea hasta el fin de la ejecución de la última tarea.
@@ -25,6 +27,8 @@ Al tratar con ambientes computacionales de grandes dimensiones, las heurísticas
 Aunque estos métodos no garantizan obtener una solución óptima para el problema, obtienen planificaciones cercanas a las óptimas que usualmente satisfacen los requerimientos de eficiencia para escenarios reales, en tiempos de ejecución razonables.
 % Entre un conjunto amplio de técnicas metaheurísticas modernas para optimizar, los algoritmos evolutivos (AE) (\citet{bib-back-handbook}) han surgido como formas flexibles, robustas y eficaces para resolver el problema de planificación de computación heterogénea (o HCSP, del inglés \textit{heterogeneous computing scheduling problem}) Para mejorar aún más la eficiencia de los AEs, las implementaciones paralelas se volvieron una opción popular para agilizar la búsqueda, posibilitando la obtención de resultados de alta calidad en tiempos de ejecución razonables incluso para problemas de optimización difíciles de resolver (\citet{bib-cantu-genetic-algorithms}, \citet{bib-alba-genetic-algorithms}).
 
+\newpage % orphaned line.
+
 \section{Formulación del problema} \label{section:descripcion-problema,subsection:formulacion-problema}
 
 \paragraph{}El contexto del problema se da en un sistema de HC compuesto por varios recursos computacionales o máquinas, para el cual se tiene un conjunto de tareas a ser ejecutadas con requerimientos computacionales variables.
@@ -37,11 +41,14 @@ Todo esto se traduce en que una planificación óptima para la ejecución de tar
 \paragraph{}En términos formales, para una instancia del problema de dimensión $X\times Y$, se tiene un conjunto de tareas $T = \{t_1,t_2,\dots,t_X\}$ y un conjunto de recursos computacionales o máquinas $M = \{m_1,m_2,\dots,m_Y \}$.
 Dada una función de tiempo de ejecución $ET : T \times M \rightarrow R^+$ tal que $ET(t_i,m_j)$ es el tiempo requerido para ejecutar la tarea $t_i$ en la máquina $m_j$, el objetivo que se persigue para resolver el problema HCSP es el de encontrar una asignación de tareas a máquinas, dada por una función $f: T \rightarrow M$, que minimice el makespan, definido como $max_{m_y \in M} \sum_{t_x \in T: f(t_x)=m_y} ET(t_x, m_y)$.
 
+\newpage % orphaned line.
+
 \paragraph{}Finalmente, se puede expresar que el objetivo de la resolución del problema HCSP se traduce en encontrar aquella función que dados un conjunto de máquinas y un conjunto de tareas determine una planificación que minimice el valor del makespan obtenido.
 
 \paragraph{}Cabe destacar que este modelo no toma en cuenta eventuales dependencias entre las tareas, asumiendo que pueden ser ejecutadas de manera independiente.
 Además, en este trabajo se estudia la versión estática del HCSP.
-Esto quiere decir que las planificaciones tomadas en cuenta se generan de manera previa a la ejecución de un conjunto de tareas y no se adaptan o varían dinámicamente en tiempo de ejecución.
+
+\paragraph{} Esto quiere decir que las planificaciones tomadas en cuenta se generan de manera previa a la ejecución de un conjunto de tareas y no se adaptan o varían dinámicamente en tiempo de ejecución.
 % TODO capaz agregar algo sobre la aplicabilidad de la versión estática del HCSP
 
 \section{Complejidad computacional} \label{section:descripcion-problema,subsection:complejidad-computacional}
@@ -52,6 +59,8 @@ Esto quiere decir que la cantidad de posibles planificaciones aumenta de manera 
 Incluso para instancias del problema muy pequeñas, el espacio de búsqueda del problema HCSP es muy grande, siendo por ejemplo de $1.048.576$ posibles planificaciones para $4$ máquinas y $10$ tareas.
 Esto se traduce en que la complejidad computacional del problema hace que métodos clásicos exactos como programación dinámica o programación lineal sólo sean útiles para instancias reducidas del problema.
 Por todo esto, es de interés el estudio de heurísticas y metaheurísticas asociadas a este tipo de problema, ya que permiten obtener planificaciones que, si bien no resultan óptimas, pueden satisfacer los requerimientos de problemáticas reales en tiempos razonables.
+
+\newpage % orphaned line.
 
 \section{Estimación de tiempos de ejecución} \label{section:descripcion-problema,subsection:estimacion-tiempo-ejecucion}
 
@@ -69,6 +78,8 @@ Por otra parte, si estamos frente a un sistema HC genérico se tendrá una heter
 \paragraph{}La heterogeneidad de tareas está asociada a qué tanta variabilidad se tiene entre las tareas a ejecutar.
 Un conjunto de tareas es heterogéneo si se envían tareas variables al sistema; tareas grandes y complejas que utilizan una gran cantidad de tiempo de procesador, así como también tareas livianas.
 Si todas las tareas a ejecutar son de características similares, se está frente a un escenario con baja heterogeneidad de tareas.
+
+\newpage % orphaned line.
 
 \paragraph{}Finalmente, un escenario es consistente si dado que una máquina $m_y$ ejecuta una tarea $t_x$ más rápido que una máquina $m_z$, entonces la máquina $m_y$ ejecuta a todas las tareas más rápido que la máquina $m_z$, siendo más rápida de manera consistente.
 Este escenario únicamente aplica a aquellas tareas orientadas al uso de CPU o \textit{CPU bound}, ya que en otros casos esta consistencia no estará presente.
@@ -140,7 +151,8 @@ Según este criterio, se escoge de manera ávida a la tarea que pueda ser comple
 Para seleccionar a esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en finalizar su ejecución para cada una de las máquinas disponibles, y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
 
 \paragraph{}Como se adelantó en el Capítulo \ref{section-introduccion}, en este trabajo se evalúa el desempeño de las redes neuronales en el marco de SV.
-Min-Min fue la heurística de referencia escogida para entrenar a los clasificadores de aprendizaje automático utilizados en este proyecto de grado.
+
+\paragraph{} Min-Min fue la heurística de referencia escogida para entrenar a los clasificadores de aprendizaje automático utilizados en este proyecto de grado.
  
  % TODO ¿tal vez incluir el código en un apéndice?
  

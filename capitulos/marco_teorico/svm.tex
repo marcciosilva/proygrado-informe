@@ -4,10 +4,13 @@
 Dado un problema de aprendizaje automático supervisado de clasificación, donde las instancias del problema pueden ser clasificadas en $N$ clases, y un conjunto de ejemplos de entrenamiento de dicho problema, una SVM busca encontrar un hiperplano que divida a estos ejemplos de entrenamiento de manera lineal en esas $N$ clases.
 De esta manera, frente a una nueva instancia del problema, la SVM es capaz de clasificarla generando una correspondencia entre esta instancia y una de las $N$ clases posibles.
 
+\newpage % orphaned line.
+
 \paragraph{}Se denominan vectores de soporte a aquellos ejemplos de entrenamiento más cercanos al hiperplano.
 La distancia entre el hiperplano y un vector de soporte se conoce como márgen y, para un conjunto de ejemplos de entrenamiento, SVM busca dividirlos de manera óptima con un hiperplano donde se maximicen estos márgenes para cada uno de los vectores de soporte, cada uno asociado a su vez a una de las posibles clases de clasificación del problema.
 En un problema donde las instancias pueden ser clasificadas en dos clases, el hiperplano de dos dimensiones es representado por una línea recta y los vectores de soporte son aquellos ejemplos de entrenamiento más cercanos a ella, desde las dos direcciones posibles.
-La Figura \ref{fig:svm_margin} muestra el funcionamiento de una SVM en un problema de clasificación de dos clases.
+
+\paragraph{} La Figura \ref{fig:svm_margin} muestra el funcionamiento de una SVM en un problema de clasificación de dos clases.
 
 \textsc{\begin{figure}[ht!]
 	\centering
@@ -18,6 +21,7 @@ Así, en color rojo se muestran los vectores de soporte, uno perteneciente a cad
 	\label{fig:svm_margin}
 \end{figure}}
 
+\newpage % orphaned line.
 
 \paragraph{}El hiperplano está dado por la ecuación $g(\vec{x}) = \vec{w}^T\vec{x} + w_0$ donde $\vec{w}$ es un vector de pesos y $\vec{x}$ es el vector de características.
 La distancia a uno de los márgenes está dada por $z = \abs{g(\vec{x})} / \norm{\vec{w}} = 1 / \norm{\vec{w}}$, por lo que el margen total se computa como $1 / \norm{\vec{w}} +  1 / \norm{\vec{w}} = 2 / \norm{\vec{w}}$.
@@ -40,6 +44,8 @@ La Figura \ref{fig:ovoovr} muestra una comparación entre estas dos estrategias.
 A la derecha se muestra la estrategia \textit{OVO}, que genera clasificadores para cada par de clases.}
 	\label{fig:ovoovr}
 \end{figure}}
+
+\newpage % orphaned line.
 
 \paragraph{}La obtención de un hiperplano que divida de manera lineal a los ejemplos de entrenamiento no siempre es posible.
 Cuando no es posible, se suele utilizar una técnica conocida como \textit{kernelización} o \textit{Kernel Trick} para aumentar la dimensión del dominio donde se está buscando un hiperplano e intentar obtener un hiperplano que separe linealmente a los ejemplos de entrenamiento en esa dimensión.
