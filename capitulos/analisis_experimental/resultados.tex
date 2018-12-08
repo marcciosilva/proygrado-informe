@@ -16,15 +16,18 @@ Así también, como se presentó en la Sección \ref{chapter-implementacion:data
 
 \paragraph{} Las redes neuronales fueron entrenadas con diferentes cantidades de capas ocultas, habiéndose generado con $2$, $3$ y $4$ capas ocultas, siendo 4 el máximo número de capas ocultas empleado debido a limitaciones de recursos y tiempos de entrenamiento altos.
 
-\paragraph{} Como fue mencionado en el Capítulo \ref{chapter-implementation}, para obtener una primera selección de parámetros de configuración para el entrenamiento de las redes neuronales se utilizó la clase \textit{model\_selection.GridSearchCV} de \textit{scikit-learn}.
+\paragraph{} Como fue mencionado en el Capítulo \ref{chapter-implementation}, para obtener una primera selección de parámetros de configuración para el entrenamiento de las redes neuronales se utilizó el método \textit{GridSearch} de la clase \textit{model\_selection.GridSearchCV} de \textit{scikit-learn}.
 Este método realiza una búsqueda, mediante validación cruzada, de los mejores parámetros para el entrenamiento de un clasificador.
 Para eso es necesario definir conjuntos de posibles valores a ser utilizados en los parámetros de los clasificadores.
-Entre los valores de los parámetros que se seleccionaron para utilizar el método \textit{GridSearchCV} con las redes neuronales, se encuentran el método de optimización de los pesos \textit{Broyden–Fletcher–Goldfarb–Shanno} para memoria limitada (\textit{lbfgs}), Gradiente Descendente (\textit{sgd}) y el método Adam (\textit{adam}), para el parámetro llamado \textit{solver}; \textit{0.01} y \textit{0.0001} para el coeficiente de aprendizaje llamado \textit{alpha} y \textit{relu}, \textit{tanh} e \textit{identity} como funciones de activación para el parámetro \textit{activation}.
-Los resultados del método \textit{GridSearch()} para los parámetros mencionados se muestran en la Tabla \ref{table:parametros}.
-Con respecto al parámetro \textit{activation} se observó que el valor seleccionado por el método \textit{GridSearch()} fue \textit{relu}; esto fue de particular interés debido a que dicha función de activación cambia de forma abrupta en su pendiente. Las primeras pruebas realizadas utilizando la red neuronal con activación \textit{relu}, brindaron resultados de \textit{makespan} mayores a los resultados de \textit{makespan} generados por SVM. 
+A continuación se presentan los valores considerados para cada uno de esos parámetros.
+Para el parámetro  \textit{solver}, se consideraron el método de optimización de los pesos \textit{Broyden–Fletcher–Goldfarb–Shanno} para memoria limitada (\textit{lbfgs}), Gradiente Descendente (\textit{sgd}) y el método Adam (\textit{adam}).
+Para el coeficiente de aprendizaje, llamado \textit{alpha}, se consideraron los valores \textit{0.01} y \textit{0.0001}.
+Finalmente, para el parámetro \textit{activation}, que indica la función de activación utilizada, se consideraron las funciones \textit{relu}, \textit{tanh} e \textit{identity}.
+Los resultados del método \textit{GridSearch} para los parámetros mencionados se muestran en la Tabla \ref{table:parametros}.
+Con respecto al parámetro \textit{activation} se observó que el valor seleccionado por el método \textit{GridSearch} fue \textit{relu}; esto fue de particular interés debido a que dicha función de activación cambia de forma abrupta en su pendiente. Las primeras pruebas realizadas utilizando la red neuronal con activación \textit{relu}, brindaron resultados de \textit{makespan} mayores a los resultados de \textit{makespan} generados por SVM. 
 Al variar la función de activación de la red neuronal, se obtuvieron resultados de \textit{makespan} menores a los valores de \textit{makespan} obtenidos con SVM.
 Esto llevó a variar las funciones de activación para estudiar el comportamiento de las redes neuronales con funciones de activación con pendientes que no tuvieran cambios abruptos.
-El resto de los parámetros se mantuvieron de acuerdo a los resultados del método \textit{GridSearch()}.
+El resto de los parámetros se mantuvieron de acuerdo a los resultados del método \textit{GridSearch}.
 
 \begin{table}[h!]
 \centering
@@ -39,7 +42,7 @@ alpha & 0.01\\
 activation & relu\\ 
 \hline
 \end{tabular}
-\caption{ Valores para los parámetros de las redes neuronales, obtenidos mediante el método \textit{GridSearch() de la biblioteca \textit{scikit-learn}}}
+\caption{ Valores para los parámetros de las redes neuronales, obtenidos mediante el método \textit{GridSearch} de la biblioteca \textit{scikit-learn}}
 \label{table:parametros}
 \end{table}
 
@@ -50,10 +53,10 @@ activation & relu\\
 \paragraph{}En primer lugar fueron comparados los resultados de \textit{makespan} para soluciones obtenidas a partir de las redes neuronales, utilizando como funciones de activación a \textit{tanh}, \textit{identity} y \textit{relu}, con 2, 3 y 4 capas ocultas.
 Asimismo, en esta comparación, también fueron analizados los resultados obtenidos con SVM. 
 
-\paragraph{} Cada clasificador fue entrenado con 100 instancias del problema de dimensión $512\times16$, lo que se traduce en 512000 instancias de entrenamiento para los clasificadores. Para cada dimensión del rango estudiado, se utilizaron 10 instancias del problema para validar el rendimiento de las redes neuronales y SVM, y los resultados presentados en esta Sección son promedios de estas 10 instancias.
+\paragraph{} Cada clasificador fue entrenado con 100 instancias del problema de dimensión $512\times16$, lo que se traduce en 51200 instancias de entrenamiento para los clasificadores. Para cada dimensión del rango estudiado, se utilizaron 10 instancias del problema para validar el rendimiento de las redes neuronales y SVM. Los resultados presentados en esta Sección son promedios de los resultados individuales de estas 10 instancias.
 
 \paragraph{} Fueron identificados aquellos clasificadores que obtuvieron mejores resultados en \textit{makespan}.
-Las Figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234} muestran las diferencias de \textit{makespan} porcentuales con respecto al \textit{makespan} obtenido por el algoritmo Min-Min, para la clasificación de instancias del problema en un rango de dimensiones que va desde $17\times16$ a $1024\times16$.
+Las Figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234} muestran las diferencias porcentuales de \textit{makespan} con respecto al \textit{makespan} obtenido por el algoritmo Min-Min, para la clasificación de instancias del problema en un rango de dimensiones que va desde $17\times16$ a $1024\times16$.
 
 \paragraph{} De manera similar, los resultados también fueron agrupados de acuerdo a su dimensión.
 Esta agrupación fue realizada de a 200 tareas con la excepción de que el primero y el último de los conjuntos van desde la dimensión $17\times16$ a $200\times16$ y $1000\times16$ a $1024\times16$, respectivamente.
@@ -84,7 +87,7 @@ Nuevamente se observa que los resultados más próximos al \textit{makespan} esp
 \paragraph{}En la Figura \ref{fig:tanh234} se observan los resultados para las redes neuronales utilizando la función de activación \textit{tanh}.
 En este caso, la red neuronal con dos capas ocultas mejora los resultados obtenidos a partir de instancias del problema de dimensión $ 400 \times 16$ en adelante. 
 
-\paragraph{} En los casos presentados en las Figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234}, los mejores resultados de las redes neuronales se encuentran para aquellas de solo dos capas ocultas. Fue profundizado el estudio de las redes neuronales con solo dos capas ocultas, de cara a entender mejor la naturaleza de las soluciones generadas. 
+\paragraph{} En los casos presentados en las Figuras \ref{fig:relu234}, \ref{fig:identity234} y \ref{fig:tanh234}, los mejores resultados de las redes neuronales se encontraron para aquellas de solo dos capas ocultas. Fue profundizado el estudio de las redes neuronales con solo dos capas ocultas, de cara a entender mejor la naturaleza de las soluciones generadas. 
 
 \textsc{\begin{figure}[H]
   \centering
@@ -154,7 +157,7 @@ Los resultados se muestran divididos en rangos de dimensión desde $ 17 \times 1
  
 \section{Red neuronal con activación \textit{identity} de dos capas ocultas}
 
-La Figura \ref{fig:identity_makespan} muestra la diferencia porcentual de \textit{makespan} para la red neuronal con función de activación \textit{identity} y la SVM, con respecto a los resultados esperados obtenidos con el algoritmo Min-Min.
+\paragraph{} La Figura \ref{fig:identity_makespan} muestra la diferencia porcentual de \textit{makespan} para la red neuronal con función de activación \textit{identity} y la SVM, con respecto a los resultados esperados obtenidos con el algoritmo Min-Min.
 Se observa que para dimensiones mayores a $ 400 \times 16$, la red neuronal conduce a levemente mejores valores de \textit{makespan} que la SVM.
 En este caso, la precisión en la clasificación, que se observa en la Figura \ref{fig:identity_accuracy}, no tiene diferencias sustanciales. 
 
@@ -234,10 +237,10 @@ Esto conduce a pensar que la precisión es fundamental para aproximarse al \text
 
 \section{Observaciones generales}
 
-\paragraph{} En términos generales, entrenar redes neuronales con menor cantidad de capas ocultas, genera mejores resultados de \textit{makespan} en clasificación, que entrenar redes neuronales con mayor cantidad de capas ocultas.
-Esto se traduce en mejores resultados de \textit{makespan} invirtiendo un menor tiempo de entrenamiento. 
+\paragraph{} En términos generales, entrenar redes neuronales con menor cantidad de capas ocultas, generó mejores resultados de \textit{makespan} en clasificación, que entrenar redes neuronales con mayor cantidad de capas ocultas.
+Esto se traduce en mejores resultados de \textit{makespan} con una menor inversión en tiempo de entrenamiento. 
 
-\paragraph{} Para redes neuronales entrenadas utilizando \textit{tanh} e \textit{identity} como funciones de activación, el \textit{makespan} de los resultados mejora levemente con respecto al \textit{makespan} de los resultados obtenidos con SVM para dimensiones grandes del problema.
-Se observa que hay una relación directa entre la precisión y la mejora porcentual de \textit{makespan} para la red neuronal con activación \textit{tanh}. También existe una relación el porcentaje de selección de mejores máquinas frente a un error y la mejora porcentual de \textit{makespan}, donde una buena selección de máquina frente a un error en la clasificación, puede mitigar los efectos negativos sobre el \textit{makespan} que genera tener una precisión baja. La red neuronal de dos capas ocultas con función de activación \textit{tanh} obtiene resultados similares en cuanto a \textit{makespan} que la red neuronal de dos capas ocultas con función de activación \textit{identity}, pero la primera obtiene mejores valores de precisión en clasificación, lo cual hace de la red neuronal con activación \textit{tanh} una configuración de red neuronal adecuada para aprender a resolver el problema HCSP.
+\paragraph{} Para redes neuronales entrenadas utilizando \textit{tanh} e \textit{identity} como funciones de activación, el \textit{makespan} de los resultados mejoró levemente con respecto al \textit{makespan} de los resultados obtenidos con SVM para dimensiones grandes del problema.
+Se observó una relación directa entre la precisión y la mejora porcentual de \textit{makespan} para la red neuronal con activación \textit{tanh}. También se observó una relación entre el porcentaje de selección de mejores máquinas frente a un error y la mejora porcentual de \textit{makespan}, donde una buena selección de máquina frente a un error en la clasificación, puede mitigar los efectos negativos sobre el \textit{makespan} que genera tener una precisión baja. La red neuronal de dos capas ocultas con función de activación \textit{tanh} obtuvo resultados similares en cuanto a \textit{makespan} que la red neuronal de dos capas ocultas con función de activación \textit{identity}, pero la primera obtuvo mejores valores de precisión en clasificación, lo cual hace de la red neuronal con activación \textit{tanh} una configuración de red neuronal potencialmente adecuada para aprender a resolver el problema HCSP.
 
-\paragraph{} Los resultados obtenidos con la red neuronal con función de activación \textit{relu} no mejoran los resultados obtenidos con SVM en términos de \textit{makespan}, obteniendo precisiones en clasificación similares, teniendo un porcentaje menor de selección de mejores máquinas frente a un error. Esto hace que \textit{relu} sea una función de activación poco adecuada si el objetivo perseguido es aprender a resolver el problema HCSP.
+\paragraph{} Los resultados obtenidos con la red neuronal con función de activación \textit{relu} no mejoraron los resultados obtenidos con SVM en términos de \textit{makespan}, obteniendo precisiones en clasificación similares, teniendo un porcentaje menor de selección de mejores máquinas frente a un error. Esto hace que \textit{relu} sea una función de activación poco adecuada si el objetivo perseguido es aprender a resolver el problema HCSP.

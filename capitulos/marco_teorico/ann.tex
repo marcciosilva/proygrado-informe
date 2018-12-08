@@ -61,7 +61,7 @@ A pesar de la falta de garantías con respecto a la convergencia del algoritmo a
 Una característica que manifiestan las redes neuronales entrenadas con Backpropagation es la habilidad de descubrir relaciones no triviales presentes en los datos de entrada, a nivel de las capas intermedias ocultas de la red.
 Por ejemplo, dada una instancia de entrenamiento con $N$ atributos, la utilización de Backpropagation puede conducir a que se descubran relaciones entre los atributos $a_i$ y $a_j$,  $\forall i, j \in \{1, \dots, N\}, i \neq j$ no identificables por un humano a simple vista, y que contribuyen a la clasificación en gran medida.
 
-\paragraph{}En este trabajo se construyen varios tipos de redes que varían en las funciones de activación utilizadas por las unidades.
+\paragraph{}En este trabajo se construyeron varios tipos de redes que varían en las funciones de activación utilizadas por las unidades.
 A continuación se presentan las funciones de activación que se usaron durante este trabajo. 
 La función \textit{tanh}, expresada de la siguiente manera: $f(x) = tanh(x) = \frac{2}{1 + e^{-2x}} - 1 $, es una función continua no lineal.
 Al componerla consigo misma se obtienen funciones no lineales, lo que permite combinar a unidades con esta función de activación sin perder la no linealidad. 
@@ -77,6 +77,6 @@ Sin embargo, computar relu es menos costoso que computar tanh porque implica ope
 \paragraph{} Por último, la función \textit{identity}, también llamada de activación lineal, expresada de la siguiente manera: $f(x) = identity(x) = x$, siempre retorna el mismo valor que recibe en su argumento, lo que implica que equivale a una regresión lineal utilizando los pesos de la unidad.
 
 % Ventajas y desventajas
-\paragraph{}Entre las ventajas de utilizar redes neuronales se encuentra el hecho de que se adecuan correctamente a problemas en los cuales los datos de entrenamiento contienen ruido y a contextos en los cuales tiempos largos de entrenamiento son aceptables.
+\paragraph{}Entre las ventajas de utilizar redes neuronales se encuentra el hecho de que se adecuan correctamente a problemas en los cuales los datos de entrenamiento contienen ruido.
 Además, las redes neuronales suelen mantener tiempos bajos de clasificación.
-Adicionalmente, como se menciona en la Sección \ref{section-trabajos-tecnicas-clasificacion}, una desventaja de las redes neuronales es que su representación interna es difícil de entender para los humanos y, por este motivo, se dice que se comportan como una “caja negra”.
+Por otra parte, como se menciona en la Sección \ref{section-trabajos-tecnicas-clasificacion}, una desventaja de las redes neuronales es que su representación interna es difícil de entender para los humanos y, por este motivo, se dice que se comportan como una “caja negra”.

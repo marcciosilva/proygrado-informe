@@ -8,7 +8,7 @@ Esta biblioteca simplifica el manejo de datos mediante estructuras de datos indi
 
 \paragraph{} Como se mencionó en la sección \ref{chapter-implementacion:data}, se utilizó cada fila de la matriz ETC del problema como los atributos para un único ejemplo de entrenamiento.
 Esto quiere decir que para una matriz de $512$ tareas y $16$ máquinas se obtienen $512$ ejemplos de entrenamiento, cada uno clasificado en una de las $16$ clases objetivo.
-Estas clases corresponden una a una con las máquinas asignadas por el algoritmo Min-Min.
+Estas clases se corresponden una a una con las máquinas asignadas por el algoritmo Min-Min.
 La figura \ref{table:datosentrenamiento} muestra un ejemplo de matriz ETC de $512$ tareas y $16$ máquinas.
 
 \begin{figure}[ht!]
@@ -85,6 +85,6 @@ El uso de estos recursos permitió realizar el entrenamiento de los clasificador
 
 \paragraph{} Finalmente, el componente de software desarrollado se encarga de persistir los clasificadores generados.
 Para esto se utiliza la clase \textit{externals.Joblib} de \textit{Scikit-Learn}.
-El uso de \textit{Joblib} es sugerido cuando se utilizan clasificadores de \textit{Scikit-Learn}, dado que provee una manera eficiente de almacenar objetos que contienen gran cantidad de \textit{arrays} de \textit{numpy}\cite{numpy}, que es el caso de modelos de \textit{Scikit-Learn} ya entrenados \cite{persistence}.
+El uso de \textit{Joblib} es sugerido cuando se utilizan clasificadores de \textit{Scikit-Learn}, dado que provee una manera eficiente de almacenar objetos que contienen gran cantidad de \textit{arrays} de \textit{numpy} \cite{numpy}, que es el caso de modelos de \textit{Scikit-Learn} ya entrenados \cite{persistence}.
 Esta biblioteca no solo permite llevar a cabo la persistencia de los modelos sino que también permite la carga en memoria de los modelos para su utilización.
 
