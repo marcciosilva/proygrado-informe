@@ -3,10 +3,10 @@
 \paragraph{} Se implementó un componente de software dedicado a crear, entrenar y persistir clasificadores de aprendizaje automático.
 Este componente permite seleccionar como clasificador de aprendizaje automático a utilizar \textit{SVM} o redes neuronales.
 
-\paragraph{} Se utilizó la biblioteca \textit{Pandas}\cite{bib-pandas} de \textit{Python}.
+\paragraph{} Se utilizó la biblioteca \textit{Pandas} \cite{bib-pandas} de \textit{Python}.
 Esta biblioteca simplifica el manejo de datos mediante estructuras de datos indizadas, proporcionando un conjunto de métodos que permiten realizar operaciones sobre estas estructuras para facilitar el análisis de los datos, haciendo un uso eficiente de los recursos computacionales sobre los que se ejecute.
 
-\paragraph{} Como se mencionó en la sección \ref{chapter-implementacion:data}, se utilizó cada fila de la matriz ETC del problema como los atributos para un único ejemplo de entrenamiento.
+\paragraph{} Como se mencionó en la Sección \ref{chapter-implementacion:data}, se utilizó cada fila de la matriz ETC del problema como los atributos para un único ejemplo de entrenamiento.
 Esto quiere decir que para una matriz de $512$ tareas y $16$ máquinas se obtienen $512$ ejemplos de entrenamiento, cada uno clasificado en una de las $16$ clases objetivo.
 Estas clases se corresponden una a una con las máquinas asignadas por el algoritmo Min-Min.
 La figura \ref{table:datosentrenamiento} muestra un ejemplo de matriz ETC de $512$ tareas y $16$ máquinas.
@@ -49,7 +49,7 @@ En particular la clase \textit{StandardScaler} analiza cada atributo de manera i
 
 \paragraph{} Para la construcción de los clasificadores de aprendizaje automático se utilizaron las clases \textit{svm.SVC} para la construcción de \textit{SVM} y \textit{neural\_network.MLPClassifier} para la construcción de las redes neuronales, ambas clases pertenecientes a la biblioteca \textit{Scikit-Learn} de \textit{Python}.
 
-\paragraph{} El clasificador \textit{SVM} se utilizó siguiendo la estrategia \textit{OVR}, dado que genera menos clasificadores que mediante la estrategia \textit{OVO} de acuerdo a lo expuesto en la sección \ref{capitulo:svm}.
+\paragraph{} El clasificador \textit{SVM} se utilizó siguiendo la estrategia \textit{OVR}, dado que genera menos clasificadores que mediante la estrategia \textit{OVO} de acuerdo a lo expuesto en la Sección \ref{capitulo:svm}.
 Además, se entendió a \textit{OVR} como la mejor estrategia dada la baja heterogeneidad de las instancias del problema, por lo cual es razonable no tener un desbalance en la cantidad de representantes de cada clase.
 
 \paragraph{} Con respecto a las redes neuronales, en particular sobre su arquitectura, se siguió la heurística recomendada por \citet{bib-heuristic-hobs}, dada la falta de consenso existente en la comunidad con respecto a la manera óptima de determinar la cantidad de neuronas en las capas ocultas de una red neuronal de acuerdo a los casos de uso en los que se apliquen dichos clasificadores.
@@ -69,7 +69,7 @@ $\alpha$ = factor de escalamiento arbitrario, con valor igual a 2 para este estu
 
 \paragraph{} El resto de los parámetros iniciales de configuración de la red neuronal se definieron utilizando la clase \textit{model\_selection.GridSearchCV}, que realiza una búsqueda exhaustiva de los mejores parámetros para el modelo mediante validación cruzada.
 A medida que se avanzó con el trabajo, estos parámetros fueron modificados para ajustarlos a las necesidades puntuales del proyecto.
-El detalle de los parámetros iniciales seleccionados se encuentra en la sección \ref{capitulo:configuracion}.
+El detalle de los parámetros iniciales seleccionados se encuentra en la Sección \ref{capitulo:configuracion}.
 % TODO ¿agregar info sobre el clasificador usado para redes neuronales (MLPClassifier)?
 
 % TODO la ref Pipeline-scikit-learn no figura en bibliography.bib
