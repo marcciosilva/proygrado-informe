@@ -40,8 +40,8 @@ Cada uno de estos archivos es una matriz ETC con el atributo objetivo correspond
 Estos atributos objetivo se agregan en un sólo \textit{DataFrame} de \textit{Pandas} \cite{DataFrame-pandas}.
 Este \textit{DataFrame} es escalado y utilizado para el entrenamiento de los clasificadores.
 
-\paragraph{} Debido a que los datos contienen atributos cuyas magnitudes tienen una gran varianza y los algoritmos utilizados manejan distancias euclideanas para el aprendizaje, los datos fueron escalados antes de realizarse el entrenamiento de los clasificadores.
-Otra razón para esclar los datos antes del entrenamiento es que \textit{Gradiente Descendente} tiende a converger más rápido cuando los datos están escalados \cite{gradiente-descendente-escalado}.
+\paragraph{} Debido a que los datos contienen atributos cuyas magnitudes tienen una gran varianza y los algoritmos utilizados manejan distancias euclidianas para el aprendizaje, los datos fueron escalados antes de realizarse el entrenamiento de los clasificadores.
+Otra razón para escalar los datos antes del entrenamiento es que \textit{Gradiente Descendente} tiende a converger más rápido cuando los datos están escalados \cite{gradiente-descendente-escalado}.
 
 \paragraph{} El escalado de los datos se realiza mediante la clase \textit{preprocessing.StandardScaler} de la biblioteca \textit{Scikit-Learn} para \textit{Python} \cite{scikit-learn}.
 Esta biblioteca provee el soporte para los métodos de aprendizaje automático y herramientas para el preprocesamiento de los datos.
@@ -75,7 +75,7 @@ El detalle de los parámetros iniciales seleccionados se encuentra en la secció
 % TODO la ref Pipeline-scikit-learn no figura en bibliography.bib
 \paragraph{} A un nivel de abstracción superior, tanto para SVM como para redes neuronales, se utilizó la clase \textit{pipeline.Pipeline} de la biblioteca \textit{Scikit-Learn}.
 Esta clase envuelve al clasificador escogido, y permite que los datos fluyan desde su forma original, pasando secuencialmente por cada etapa del preprocesamiento, para finalmente ingresar en el clasificador.
-La utilización de esta clase permite la evaluación del modelo con estrategias como valización cruzada, simplificando la implementación del preprocesamiento de los datos mediante una encadenación de transformaciones atómicas.
+La utilización de esta clase permite la evaluación del modelo con estrategias como validación cruzada, simplificando la implementación del preprocesamiento de los datos mediante una encadenación de transformaciones atómicas.
 En particular, se utilizó la clase \textit{Pipeline} con el escalado encadenado al clasificador seleccionado. 
 
 \paragraph{} Para realizar el entrenamiento de los clasificadores se utilizaron los servicios de máquinas virtuales EC2 de Amazon Web Services \cite{aws}.
