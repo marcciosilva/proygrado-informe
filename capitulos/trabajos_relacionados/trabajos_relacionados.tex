@@ -12,7 +12,7 @@ Finalmente, en la Sección \ref{section-trabajos-relacionados-mapreduce} se abor
 
 % FIRST
 % citep para que aparezca algo tipo Dorronsoro et al [1]
-% cite o citet para que aparezca sólo la referencia tipo [1]
+% cite o citet para que aparezca sólo la referencia del estilo [1]
 \paragraph{} El síndrome de Savant es una condición donde los individuos que la padecen, conocidos como savants, son capaces de resolver tareas de cálculo, memoria o mnemotecnia, como encontrar el día de la semana para una fecha dada o listar números primos utilizando \textit{métodos desconocidos}, en tiempos inferiores a los esperados normalmente y con una gran precisión. 
 
 \paragraph{}Tomando como inspiración al síndrome de Savant, \citet{savant-original} introdujeron el paradigma de SV con el objetivo de generar programas que, utilizando aprendizaje automático supervisado, encuentren soluciones a problemas con una calidad comparable a las soluciones ofrecidas por otros algoritmos conocidos.
@@ -73,8 +73,7 @@ El valor del trabajo de \citet{ml-survey} para este proyecto de grado reside en 
 \paragraph{} El trabajo de \citet{fs-survey} ofrece información acerca de las técnicas más utilizadas para la selección de atributos en aprendizaje automático.
 La selección de atributos refiere a la acción de seleccionar un subconjunto de atributos o \textit{features} de las instancias del problema a resolver, que efectivamente puedan describir al problema reduciendo el efecto del ruido o variables irrelevantes.
 Además, al reducir la cantidad de variables que describen un problema es posible comprender los datos de mejor manera y reducir los requerimientos computacionales asociados a su manejo.
-El problema de seleccionar atributos resulta no trivial dado que si las instancias de entrenamiento utilizadas tienen $N$ atributos posibles, es necesario tomar en cuenta $2^N$ subconjuntos posibles de atributos.
-\citet{fs-survey} presentan los siguientes tipos de métodos de selección de atributos para aprendizaje supervisado:
+El problema de seleccionar atributos resulta no trivial dado que si las instancias de entrenamiento utilizadas tienen $N$ atributos posibles, es necesario tomar en cuenta $2^N$ subconjuntos posibles de atributos. \citet{fs-survey} presentan los siguientes tipos de métodos de selección de atributos para aprendizaje supervisado:
 \begin{itemize}
 \item \textit{Filter}: Ordena a los atributos de acuerdo a algún criterio de ordenamiento que les asigna un valor y elimina aquellos atributos que queden por debajo de un umbral mínimo.
 Se sugieren algoritmos para la determinación de la relevancia de cada atributo, siendo el algoritmo \textit{Mutual Information} el más relevante, que mediante el cálculo de la entropía condicional entre dos atributos determina qué tan dependientes son entre sí, lo que permite determinar qué tan dependiente es un atributo de la clasificación de una instancia de entrenamiento.
@@ -138,23 +137,17 @@ Se indica el autor, el año de publicación del trabajo y una breve descripción
 \specialrule{.2em}{.1em}{.1em} 
 \multicolumn{1}{c}{Autores} & \multicolumn{1}{c}{Año}  & \multicolumn{1}{c}{Conceptos clave}\\ 
 \hline
-Dorronsoro et al.
-\cite{savant-original} & 2013 & Se presenta el paradigma Savant para la paralelización de una heurística de planificación con aprendizaje automático utilizando SVM \\ 
+\citet{savant-original} & 2013 & Se presenta el paradigma Savant para la paralelización de una heurística de planificación con aprendizaje automático utilizando SVM \\ 
 \hline
-Dorronsoro et al.
-\cite{savant-bag} & 2016 & Estudio del problema de la mochila bajo el paradigma Savant \\
+\citet{savant-bag} & 2016 & Estudio del problema de la mochila bajo el paradigma Savant \\
 \hline
-Kotsiantis, S.
-\cite{ml-survey} & 2007 & Compendio de las técnicas de clasificación más utilizadas en aprendizaje automático supervisado \\
+\citet{ml-survey} & 2007 & Compendio de las técnicas de clasificación más utilizadas en aprendizaje automático supervisado \\
 \hline
-Chandrashekar et al.
-\cite{fs-survey} & 2014 & Estudio comparativo de técnicas de selección de atributos en aprendizaje automático \\
+\citet{fs-survey} & 2014 & Estudio comparativo de técnicas de selección de atributos en aprendizaje automático \\
 \hline
-Khalid et al.
-\cite{survey-feature-selection-extraction} & 2014 & Compendio de técnicas de selección de atributos en aprendizaje automático, con foco en PCA \\
+\citet{survey-feature-selection-extraction} & 2014 & Compendio de técnicas de selección de atributos en aprendizaje automático, con foco en PCA \\
 \hline
-Dean et al.
-\cite{mapreduce} & 2008 & Utilización de MapReduce para procesamiento de grandes volúmenes de datos en clusters \\
+\citet{mapreduce} & 2008 & Utilización de MapReduce para procesamiento de grandes volúmenes de datos en clusters \\
 \specialrule{.2em}{.1em}{.1em} 
 \end{tabular}
 \caption{Trabajos relacionados al proyecto de grado}
