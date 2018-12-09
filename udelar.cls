@@ -673,14 +673,13 @@ UdelarExaminerSurname:\the\count1 \endcsname\\\\ \ \ \ %
    	  %
    	  \ifnum\@director>0
    	  \count1=0
-   	  \nohyphens{I.~\@whilenum \count1<\@director \do {
-   	  		\csname UdelarDirectorSurname:\the\count1 \endcsname, \space \csname UdelarDirectorName:\the\count1 \endcsname , 
-   	  		\advance\count1 by 1}
-   	  \fi
-   	  %
-      \ifthenelse{\@codirector>0}{\hspace{-2mm}\emph{et~al.}{}}.
-      II.~Universidad de la Rep{\'u}blica, Programa de Grado \@tipoescritura~\local@graduatename.
-      III.~T{\'i}tulo.}
+   	  \nohyphens{I.~Nesmachnow, Sergio , Massobrio, Renzo.}
+      \nohyphens{
+        II.~Universidad de la Rep{\'u}blica, Programa de Grado \@tipoescritura~\local@graduatename.
+      }
+      \nohyphens{
+        III.~T{\'i}tulo.
+      }
     \end{minipage}}
   \end{center}
 \vspace*{\fill}}
