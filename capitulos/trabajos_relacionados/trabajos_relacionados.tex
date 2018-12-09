@@ -27,7 +27,7 @@ Finalmente, se consigue un sistema que puede trabajar de manera paralela, genera
 Los autores evaluaron el paradigma propuesto sobre un conjunto de instancias de prueba generadas de forma aleatoria (en la forma de matrices ETC, como fue presentado en la Sección \ref{section:descripcion-problema,subsection:estimacion-tiempo-ejecucion}), con el objetivo de comparar las soluciones obtenidas mediante Savant con las de Min-Min.
 Cada instancia de prueba estaba compuesta por un conjunto de tareas, un conjunto de máquinas y las duraciones de las tareas para cada máquina. 
 % TODO tal vez dar un poco más de detalle del estudio, tipo decir cuántas instancias se usaron
-Los resultados mostraron una precisión promedio (similaridad con la solución de referencia) del 82\%, resultando mejor la precisión para instancias más pequeñas del problema (128 tareas y 4 máquinas) que para instancias de mayor tamaño (512 tareas y 16 máquinas). 
+Los resultados mostraron una precisión promedio (similitud con la solución de referencia) del 82\%, resultando mejor la precisión para instancias más pequeñas del problema (128 tareas y 4 máquinas) que para instancias de mayor tamaño (512 tareas y 16 máquinas). 
 % TODO ¿poner dimensiones como $128 \times 4$ ya que esta notación es explicada en la parte de descripción del problema?
 Fueron obtenidos mejores resultados al utilizar un \textit{reducer} con búsqueda local frente a un \textit{reducer} simple que genera una solución en base a la salida directa de cada \textit{mapper} sin hacer modificaciones.
 En algunas instancias de prueba SV fue capaz de encontrar mejores soluciones que Min-Min. 
@@ -114,8 +114,7 @@ El trabajo de \citet{survey-feature-selection-extraction} fue un gran aporte a l
 Mapreduce es un modelo de programación utilizado para procesar y generar grandes conjuntos de datos.
 En términos genéricos, un sistema implementado bajo el modelo MapReduce recibe datos en forma de un conjunto de pares (clave, valor), los transforma mediante la aplicación de una función definida por el usuario y devuelve un conjunto de pares (clave, valor) de salida agregados de acuerdo a un criterio también definido por el usuario.
 La transformación aplicada a los datos en la entrada del sistema se llama \textit{map} y la transformación aplicada a los datos en la salida del sistema se llama \textit{reduce}.
-En la implementación propuesta en Dean et al.
-(2008), la computación dada en las funciones \textit{map} y \textit{reduce} es paralelizada automáticamente en múltiples recursos de cómputo, posibilitando el procesamiento masivo y paralelo de datos.
+En la implementación propuesta por los autores, la computación dada en las funciones \textit{map} y \textit{reduce} es paralelizada automáticamente en múltiples recursos de cómputo, posibilitando el procesamiento masivo y paralelo de datos.
 En concreto, el sistema presentado se encarga de inicializar múltiples hilos de ejecución en un régimen maestro-esclavo, donde el hilo maestro se encarga de asignar tareas \textit{map} o \textit{reduce} a los hilos esclavos.
 De esta manera, se cuenta con \textit{map workers} y \textit{reduce workers}.
 Cada \textit{map worker} recibe una porción de los datos, los procesa y guarda su salida en un disco local.
