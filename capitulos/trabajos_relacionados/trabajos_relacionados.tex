@@ -2,9 +2,9 @@
 \markright{Trabajos relacionados}
 
 \paragraph{}En este capítulo se describen los principales trabajos relacionados a la temática abordada en este proyecto.
-El paradigma de SV ha sido explorado únicamente en dos trabajos \cite{savant-original} \cite{savant-bag}, que son abordados en la Sección \ref{section-trabajos-relacionados-savant}.
+El paradigma SV ha sido explorado únicamente en dos trabajos \cite{savant-original} \cite{savant-bag}, que son abordados en la Sección \ref{section-trabajos-relacionados-savant}.
 La Sección \ref{section-trabajos-tecnicas-clasificacion} está dedicada a técnicas de clasificación en aprendizaje supervisado, mientras que la Sección \ref{section-trabajos-seleccion-extraccion-atributos} trata la temática de selección y extracción de atributos en aprendizaje automático.
-Finalmente, en la Sección \ref{section-trabajos-relacionados-mapreduce} se aborda el modelo de programación MapReduce, que permite la ejecución paralela en un sistema implementado bajo el paradigma de SV.
+Finalmente, en la Sección \ref{section-trabajos-relacionados-mapreduce} se aborda el modelo de programación MapReduce, que permite la ejecución paralela en un sistema implementado bajo el paradigma SV.
 
 % ############### RESEÑA ###############
 
@@ -15,9 +15,9 @@ Finalmente, en la Sección \ref{section-trabajos-relacionados-mapreduce} se abor
 % cite o citet para que aparezca sólo la referencia del estilo [1]
 \paragraph{} El síndrome de Savant es una condición donde los individuos que la padecen, conocidos como savants, son capaces de resolver tareas de cálculo, memoria o mnemotecnia, como encontrar el día de la semana para una fecha dada o listar números primos utilizando \textit{métodos desconocidos}, en tiempos inferiores a los esperados normalmente y con una gran precisión. 
 
-\paragraph{}Tomando como inspiración al síndrome de Savant, \citet{savant-original} introdujeron el paradigma de SV con el objetivo de generar programas que, utilizando aprendizaje automático supervisado, encuentren soluciones a problemas con una calidad comparable a las soluciones ofrecidas por otros algoritmos conocidos.
+\paragraph{}Tomando como inspiración al síndrome de Savant, \citet{savant-original} introdujeron el paradigma SV con el objetivo de generar programas que, utilizando aprendizaje automático supervisado, encuentren soluciones a problemas con una calidad comparable a las soluciones ofrecidas por otros algoritmos conocidos.
 De esta manera, el componente de aprendizaje automático está asociado de manera simbólica a las reglas que un Savant incorpora automáticamente.
-Los autores aplicaron el paradigma de SV sobre el problema HCSP, presentado en la Sección \ref{section-descripcion-problema}, utilizando también a Min-Min como criterio de referencia para llevar a cabo el aprendizaje automático.
+Los autores aplicaron el paradigma SV sobre el problema HCSP, presentado en la Sección \ref{section-descripcion-problema}, utilizando también a Min-Min como criterio de referencia para llevar a cabo el aprendizaje automático.
 Con el objetivo de aplicar SV a la resolución de este problema de manera paralela, el sistema planteado implementó el modelo MapReduce.
 Bajo este modelo, cada \textit{mapper} se corresponde con un clasificador multiclase entrenado previamente (utilizando SVM). Un único \textit{reducer} realiza una búsqueda local con el objetivo de mejorar la solución y posteriormente devuelve su solución.
 El sistema permite utilizar tantos \textit{mappers} como tareas se tengan en la instancia del problema, posibilitando la ejecución en paralelo de cada uno.
@@ -154,6 +154,6 @@ Se indica el autor, el año de publicación del trabajo y una breve descripción
 \end{table}
 % ############### FIN TABLA ###############
 
-\paragraph{} El análisis de la literatura relacionada muestra que el paradigma de SV en particular no ha sido estudiado de manera extensiva y permite llegar a la conclusión de que existe lugar para contribuir, por ejemplo profundizando en la utilización de métodos de aprendizaje automático distintos a SVM.
+\paragraph{} El análisis de la literatura relacionada muestra que el paradigma SV en particular no ha sido estudiado de manera extensiva y permite llegar a la conclusión de que existe lugar para contribuir, por ejemplo profundizando en la utilización de métodos de aprendizaje automático distintos a SVM.
 
 \newpage
