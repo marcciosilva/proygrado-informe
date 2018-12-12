@@ -143,7 +143,7 @@ En la Figura \ref{fig:formato-escenario-hcsp} se muestra un ejemplo del formato 
 
 \section{Heurística de referencia} \label{section:descripcion-problema,subsection:heuristica}
  
-\paragraph{}En el Algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema de HCSP.
+\paragraph{}En el Algoritmo \ref{algorithm:planificacion-tareas}, como se puede ver en \citet{bib-doctorado-nesmachnow}, se presenta una versión genérica de una heurística generadora de planificaciones frente al problema HCSP.
 Particularmente, la heurística utilizada como referencia en este proyecto emplea al algoritmo \textit{Min-Min} como criterio para seleccionar tareas en cada iteración del algoritmo.
 Según este criterio, se escoge de manera ávida a la tarea que pueda ser completada primero.
 Para seleccionar a esta tarea, se calcula el mínimo tiempo que cada una de las tareas sin asignar puede demorar en finalizar su ejecución para cada una de las máquinas disponibles, y se escoge a aquella tarea que en promedio lleve menos tiempo en completar.
